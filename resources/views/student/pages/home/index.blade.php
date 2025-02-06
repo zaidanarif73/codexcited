@@ -1,6 +1,6 @@
 @extends('student.layouts.master')
 @section('content')
-    <!-- Carousel Start -->
+    <!-- Carousel Start --> 
     <div class="container-fluid p-0 mb-5">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
@@ -9,9 +9,8 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-sm-10 col-lg-8">
-                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">KURSUS BAHASA PEMROGRAMAN ONLINE GES</h5>
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Kursus Bahasa Pemrograman Online</h5>
                                 <h1 class="display-3 text-white animated slideInDown">Belajar Koding, Kuasai Masa Depan!</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elitr.</p>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
                                 <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
                             </div>
@@ -27,7 +26,6 @@
                             <div class="col-sm-10 col-lg-8">
                                 <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Best Online Courses</h5>
                                 <h1 class="display-3 text-white animated slideInDown">Dari Pemula Menjadi Pengembang, Mulai dengan Kode!</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elitr.</p>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
                                 <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
                             </div>
@@ -44,21 +42,12 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                            <h5 class="mb-3">Skilled Instructors</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                            <h5 class="mb-3">Online Classes</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <h5 class="mb-3">Kelas Online</h5>
+                            <p>Kelas yang dapat diakses dimanapun dan kapanpun secara online</p>
                         </div>
                     </div>
                 </div>
@@ -66,8 +55,8 @@
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-home text-primary mb-4"></i>
-                            <h5 class="mb-3">Home Projects</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <h5 class="mb-3">Latihan Soal</h5>
+                            <p>Berisikan latihan dan soal yang mengasah pengetahuan dan skill dalam seputar pemrogramman</p>
                         </div>
                     </div>
                 </div>
@@ -75,8 +64,17 @@
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
-                            <h5 class="mb-3">Book Library</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <h5 class="mb-3">Kompetitif</h5>
+                            <p>Raih peringkat teratas dengan bersaing bersama para siswa lainnya</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">Umpan Balik Jawaban</h5>
+                            <p>Memberikan unpan balik dan respon jawaban yang sulit di pahami</p>
                         </div>
                     </div>
                 </div>
@@ -96,10 +94,10 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                    <h1 class="mb-4">Welcome to eLEARNING</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Tentang Kami</h6>
+                    <h1 class="mb-4">Selamat Datang di Codexcited</h1>
+                    <p class="mb-4">Platform kursus belajar dasar pemrogramman online jitu dan mudah dipahami</p>
+                    <p class="mb-4">Dengan pendekatan drill and practice guna memicu semangat dalam memperlajari pemrograman dengan baik</p>
                     <div class="row gy-2 gx-4 mb-4">
                         <div class="col-sm-6">
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
@@ -132,8 +130,8 @@
     <div class="container-xxl py-5 category">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Categories</h6>
-                <h1 class="mb-5">Courses Categories</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">Kategori</h6>
+                <h1 class="mb-5">Kategori Kursus</h1>
             </div>
             <div class="row g-3">
                 <div class="col-lg-7 col-md-6">
@@ -142,7 +140,7 @@
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="{{URL::to('/')}}/assets/student/img/cat-1.jpg" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Web Design</h5>
+                                    <h5 class="m-0">HTML</h5>
                                     <small class="text-primary">49 Courses</small>
                                 </div>
                             </a>
@@ -151,7 +149,7 @@
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="{{URL::to('/')}}/assets/student/img/cat-2.jpg" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Graphic Design</h5>
+                                    <h5 class="m-0">CSS</h5>
                                     <small class="text-primary">49 Courses</small>
                                 </div>
                             </a>
@@ -160,7 +158,7 @@
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="{{URL::to('/')}}/assets/student/img/cat-3.jpg" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Video Editing</h5>
+                                    <h5 class="m-0">JavaScript</h5>
                                     <small class="text-primary">49 Courses</small>
                                 </div>
                             </a>
@@ -171,7 +169,7 @@
                     <a class="position-relative d-block h-100 overflow-hidden" href="">
                         <img class="img-fluid position-absolute w-100 h-100" src="{{URL::to('/')}}/assets/student/img/cat-4.jpg" alt="" style="object-fit: cover;">
                         <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
-                            <h5 class="m-0">Online Marketing</h5>
+                            <h5 class="m-0">Framework</h5>
                             <small class="text-primary">49 Courses</small>
                         </div>
                     </a>
