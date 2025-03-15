@@ -26,22 +26,22 @@
                 <h4 class="text-white mb-3">Gallery</h4>
                 <div class="row g-2 pt-2">
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/student/img/course-1.jpg" alt="">
+                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/guest/img/course-1.jpg" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/student/img/course-2.jpg" alt="">
+                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/guest/img/course-2.jpg" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/student/img/course-3.jpg" alt="">
+                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/guest/img/course-3.jpg" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/student/img/course-2.jpg" alt="">
+                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/guest/img/course-2.jpg" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/student/img/course-3.jpg" alt="">
+                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/guest/img/course-3.jpg" alt="">
                     </div>
                     <div class="col-4">
-                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/student/img/course-1.jpg" alt="">
+                        <img class="img-fluid bg-light p-1" src="{{URL::to('/')}}/assets/guest/img/course-1.jpg" alt="">
                     </div>
                 </div>
             </div>

@@ -1,9 +1,13 @@
+@if(Auth::user()->hasRole([
+        \App\Enums\RoleEnum::Student,
+    ]))
 <!DOCTYPE html>
 <html lang="en">
 @include("student.layouts.head")
 <body>
+    @include('sweetalert::alert')
     <!-- spinner -->
-    @include("student.components.spinner")
+    {{-- @include("student.components.spinner") --}}
 
     <!-- navbar -->
     @include("student.layouts.navbar")
@@ -14,13 +18,13 @@
     </main>
 
     <!-- footer -->
-    @include("student.layouts.footer")
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    {{-- @include("student.layouts.footer") --}}
 
     <!-- script -->
-    @include("student.layouts.script")
+    {{-- @include("student.layouts.script") --}}
 </body>
 
 </html>
+@else
+    <p>Acces Denied!</p>
+@endif

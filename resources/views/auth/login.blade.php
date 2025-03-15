@@ -14,6 +14,7 @@
     <link href="{{URL::to('/')}}/assets/auth/css/style.css" rel="stylesheet">
 </head>
 <body>
+	@include('sweetalert::alert')
 	<div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
 
@@ -23,16 +24,17 @@
 					<input type="text" name="name" placeholder="Nama Lengkap" required="">
 					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="password" placeholder="Password" required="">
-					<button>Daftar Sekarang</button>
+					<button value="daftar" type="submit">Daftar Sekarang</button>
 				</form>
 			</div>
 
 			<div class="login">
-				<form>
+				<form action="{{ route('auth.login.index') }}" method="POST">
+					@csrf
 					<label for="chk" aria-hidden="true">Masuk</label>
 					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="password" placeholder="Password" required="">
-					<button>Masuk</button>
+					<button value="masuk" type="submit">Masuk</button>
 				</form>
 			</div>
 	</div>

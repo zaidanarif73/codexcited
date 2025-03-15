@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+
+use App\Enums\UserEnum;
+use App\Enums\RoleEnum;
+
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +26,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'avatar',
+        'status',
+        'email_verified_at',
+        'remember_token',
     ];
 
     /**
@@ -30,7 +40,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -42,4 +51,39 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function status()
+    {
+        $return = null;
+        switch ($this->status) {
+            case UserEnum::STATUS_ACTIVE:
+                $return = (object) [
+                    'class' => 'success',
+                    'msg' => 'Aktif',
+                ];
+                break;
+
+            case UserEnum::STATUS_INACTIVE:
+                $return = (object) [
+                    'class' => 'warning',
+                    'msg' => 'Tidak Aktif',
+                ];
+                break;
+        }
+
+        return $return;
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->hasRole(RoleEnum::SuperAdmin);
+    }
+    public function isTeacher(): bool
+    {
+        return $this->hasRole(RoleEnum::Teacher);
+    }
+    public function isStudent(): bool
+    {
+        return $this->hasRole(RoleEnum::Student);
+    }
 }

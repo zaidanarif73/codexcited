@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     public function __construct()
     {
-        $this->view = "student.pages.home.";
+        $this->view = "student.pages.dashboard.";
     }
 
     public function index(){
