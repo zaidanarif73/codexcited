@@ -21,7 +21,7 @@
     {{-- @include("student.layouts.footer") --}}
 
     <!-- script -->
-    {{-- @include("student.layouts.script") --}}
+    @include("student.layouts.script")
 </body>
 
 </html>
