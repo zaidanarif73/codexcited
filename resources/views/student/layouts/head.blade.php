@@ -22,4 +22,6 @@
 
     <!-- Template Stylesheet -->
     <link href="{{URL::to('/')}}/assets/student/css/style.css" rel="stylesheet">
+
+    @yield('css')
 </head>
