@@ -58,10 +58,6 @@
         <div class="text-white-50">Berikut adalah aktivitas anda terakhir ini</div>
       </div>
     </div>
-    <div>
-      <!-- Optional: Add a settings or notifications icon -->
-      <button class="btn btn-light btn-circle shadow-sm"><i class="bi bi-gear"></i></button>
-    </div>
   </div>
   
   <!-- Cards Section -->

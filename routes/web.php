@@ -37,4 +37,15 @@ Route::group(["middleware" => ["dashboard.access"], "namespace" => "App\Http\Con
 //STUDENT ROUTES
 Route::group(["middleware" => ["dashboard.access"], "namespace" => "App\Http\Controllers\Student", "as" => "student.", "prefix" => "student"], function () {
     Route::get("/", "DashboardController@index")->name('dashboard.index');
+
+    Route::group(["as" => "materi.", "prefix" => "materi"], function () {
+        Route::get("/", "MateriController@index")->name('index');
+    });
+
+    Route::group(["as" => "leaderboard.", "prefix" => "leaderboard"], function () {
+        Route::get("/", "LeaderboardController@index")->name('index');
+    });
+
+
 });
+

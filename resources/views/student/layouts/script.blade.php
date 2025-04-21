@@ -8,3 +8,5 @@
 
 <!-- Template Javascript -->
 <script src="{{URL::to('/')}}/assets/student/js/main.js"></script>
+
+@yield('script')
