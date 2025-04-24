@@ -22,6 +22,10 @@ Route::group(["namespace" => "App\Http\Controllers\Auth", "as" => "auth.", "pref
 
     Route::get("/logout", "LogoutController@logout")->name('logout');
     
+    Route::group(["as" => "signup.", "prefix" => "signup"], function () {
+        Route::get("/", "SignUpController@index")->name("index");
+        Route::post("/", "SignUpController@post")->name("post");
+    });
 });
 
 //GUEST ROUTES

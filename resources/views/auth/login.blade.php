@@ -19,7 +19,8 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form>
+				<form action="{{ route('auth.signup.index') }}" method="POST">
+					@csrf
 					<label for="chk" aria-hidden="true">Daftar</label>
 					<input type="text" name="name" placeholder="Nama Lengkap" required="">
 					<input type="email" name="email" placeholder="Email" required="">
