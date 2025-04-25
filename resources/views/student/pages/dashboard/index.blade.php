@@ -52,9 +52,9 @@
 <!-- Dashboard Header with Profile Picture -->
 <div class="dashboard-header d-flex align-items-center justify-content-between p-4 rounded-3 mb-4" style="background: linear-gradient(90deg, #06b6d4 0%, #3b82f6 100%); box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
     <div class="container d-flex align-items-center gap-3">
-      <img src="https://i.pravatar.cc/64?u=sarah" alt="Sarah's Profile" class="rounded-circle border border-3 border-white shadow-sm" width="64" height="64">
+      <img src="https://i.pravatar.cc/64?u=sarah" alt="users picture profile" class="rounded-circle border border-3 border-white shadow-sm" width="64" height="64">
       <div>
-        <h2 class="fw-bold text-white mb-1">Selamat Datang, Sarah!</h2>
+        <h2 class="fw-bold text-white mb-1">Selamat Datang, {{ Auth::user()->name ?? null }}</h2>
         <div class="text-white-50">Berikut adalah aktivitas anda terakhir ini</div>
       </div>
     </div>

@@ -11,6 +11,7 @@
                 <a href="{{ route('student.dashboard.index') }}" class="nav-item nav-link active">Dashboard</a>
                 <a href="{{ route('student.materi.index') }}" class="nav-item nav-link">Materi</a>
                 <a href="{{ route('student.leaderboard.index') }}" class="nav-item nav-link">Leaderboard</a>
+                <a href="{{ route('student.discussion.index') }}" class="nav-item nav-link">Forum Diskusi</a>
                 <a href="{{ route('auth.logout') }}" class="nav-item nav-link">Logout</a>
             </div>
         </div>

@@ -46,6 +46,10 @@ Route::group(["middleware" => ["dashboard.access"], "namespace" => "App\Http\Con
         Route::get("/", "MateriController@index")->name('index');
     });
 
+    Route::group(["as" => "discussion.", "prefix" => "discussion"], function () {
+        Route::get("/", "DiscussionController@index")->name('index');
+    });
+
     Route::group(["as" => "leaderboard.", "prefix" => "leaderboard"], function () {
         Route::get("/", "LeaderboardController@index")->name('index');
     });
