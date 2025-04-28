@@ -104,6 +104,29 @@
             }
         }
     });
+
+    //dark mode toggle button in navbar
+    $(function() {
+        // On page load, check for saved mode
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            $('body').addClass('dark-mode');
+            $('#darkModeIcon').text('☀️');
+            } else {
+            $('#darkModeIcon').text('🌙');
+            }
+        
+            // Toggle on button click
+            $('#darkModeToggle').on('click', function() {
+            $('body').toggleClass('dark-mode');
+            if ($('body').hasClass('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                $('#darkModeIcon').text('☀️');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                $('#darkModeIcon').text('🌙');
+            }
+            });
+        });
     
 })(jQuery);
 

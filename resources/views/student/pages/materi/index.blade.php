@@ -2,10 +2,6 @@
 
 @section('css')
 <style>
-    body {
-      background: linear-gradient(135deg, #f4fafe 0%, #e3eafc 100%);
-      min-height: 100vh;
-    }
     .course-card {
       border: none;
       border-radius: 1rem;

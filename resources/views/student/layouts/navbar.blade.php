@@ -13,6 +13,9 @@
                 <a href="{{ route('student.leaderboard.index') }}" class="nav-item nav-link">Leaderboard</a>
                 <a href="{{ route('student.discussion.index') }}" class="nav-item nav-link">Forum Diskusi</a>
                 <a href="{{ route('auth.logout') }}" class="nav-item nav-link">Logout</a>
+                <button id="darkModeToggle" class="btn btn-light rounded-circle shadow-sm mx-3" style="width:44px; height:44px;">
+                    <span id="darkModeIcon" style="font-size:1.5rem; transition: transform 0.3s;">🌙</span>
+                </button>
             </div>
         </div>
     </nav>

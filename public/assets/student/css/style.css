@@ -21,6 +21,65 @@
     z-index: 99;
 }
 
+/*main light mode*/
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+
+/** darkmode **/
+body.dark-mode {
+    background: #181c25 !important;
+    color: #f0f0f0 !important;
+  }
+  .dark-mode .navbar,
+  .dark-mode .dashboard-hero,
+  .dark-mode .card,
+  .dark-mode .recent-activity {
+    background: #23283a !important;
+    color: #f0f0f0 !important;
+    box-shadow: none;
+  }
+  .dark-mode .stat-card {
+    border-color: #23283a !important;
+  }
+  .dark-mode .dashboard-hero {
+    background: #1e90a3 !important;
+  }
+  .dark-mode .stat-card .stat-icon {
+    background: #283046 !important;
+  }
+  .dark-mode .recent-activity {
+    background: #23283a !important;
+  }
+  .dark-mode .navbar {
+    border-bottom: 1px solid #23283a !important;
+  }
+  .dark-mode .btn-outline-secondary {
+    color: #f0f0f0;
+    border-color: #444;
+  }
+  .dark-mode .btn-outline-secondary:hover {
+    background: #23283a;
+  }
+  .dark-mode h1{
+    color: #f0f0f0 !important;
+  }
+  .dark-mode h2,h3,h4,h5,h6 {
+    color: var(--primary)
+  }
+  .dark-mode .navbar-nav a{
+    color: #f0f0f0 !important;
+  }
+
+#darkModeToggle {
+    transition: background 0.3s, box-shadow 0.3s;
+}
+#darkModeToggle:hover {
+    background: #e3eafc;
+    box-shadow: 0 2px 8px rgba(21, 194, 212, 0.15);
+}
 
 /*** Spinner ***/
 #spinner {

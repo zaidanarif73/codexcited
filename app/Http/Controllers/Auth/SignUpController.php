@@ -41,8 +41,8 @@ class SignUpController extends Controller
                 $user->assignRole(RoleEnum::Student);
                 $user->save();
 
-                alert()->html('Berhasil','Pendaftaran berhasil','success');
-                return redirect()->intended(route('student.dashboard.index'));
+                alert()->html('Berhasil','Pendaftaran berhasil, silahkan login','success');
+                return redirect()->back();
             }
 
         } catch (Error $e) {

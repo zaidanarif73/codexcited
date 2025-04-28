@@ -1,10 +1,6 @@
 @extends('student.layouts.master')
 @section('css')
 <style>
-    body {
-        background: linear-gradient(135deg, #f4fafe 0%, #e3eafc 100%);
-        min-height: 100vh;
-        }
         .leaderboard-card {
         border: none;
         border-radius: 1.5rem;

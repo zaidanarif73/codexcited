@@ -2,10 +2,6 @@
 
 @section('css')
 <style>
-    body {
-      background: linear-gradient(135deg, #f4fafe 0%, #e3eafc 100%);
-      min-height: 100vh;
-    }
     .forum-hero {
       background: linear-gradient(90deg, #06b6d4 0%, #3b82f6 100%);
       color: #fff;
