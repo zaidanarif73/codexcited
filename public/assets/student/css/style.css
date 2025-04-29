@@ -72,6 +72,12 @@ body.dark-mode {
   .dark-mode .navbar-nav a{
     color: #f0f0f0 !important;
   }
+  .dark-mode .leaderboard-card{
+    background: #23283a !important;
+  }
+  .dark-mode .forum-card{
+    background: #23283a !important;
+  }
 
 #darkModeToggle {
     transition: background 0.3s, box-shadow 0.3s;
