@@ -54,6 +54,11 @@ Route::group(["middleware" => ["dashboard.access"], "namespace" => "App\Http\Con
         Route::get("/", "LeaderboardController@index")->name('index');
     });
 
+    Route::group(["as" => "profile.", "prefix" => "profile"], function () {
+        Route::get("/", "ProfileController@index")->name('index');
+        Route::put("/", "ProfileController@update")->name('update');
+    });
+
 
 });
 

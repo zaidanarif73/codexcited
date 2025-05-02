@@ -78,6 +78,9 @@ body.dark-mode {
   .dark-mode .forum-card{
     background: #23283a !important;
   }
+  .dark-mode .profile-card{
+    background: #23283a !important;
+  }
 
 #darkModeToggle {
     transition: background 0.3s, box-shadow 0.3s;
