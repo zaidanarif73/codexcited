@@ -93,8 +93,8 @@
             <div class="mx-auto mb-2" style="background:#fff3e0; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center;">
               <i class="bi bi-calendar-check text-warning fs-3"></i>
             </div>
-            <h6 class="fw-bold mb-1">Upcoming Assignments</h6>
-            <div class="display-6 fw-bold mb-0">3</div>
+              <h6 class="fw-bold mb-1">Rank Anda</h6>
+            <div class="display-6 fw-bold mb-0">{{ $rank }}</div>
             <small class="text-muted">Due this week</small>
           </div>
         </div>
