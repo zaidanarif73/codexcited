@@ -81,61 +81,35 @@
           </tr>
         </thead>
         <tbody>
+          @forelse ($table as $index => $row)
           <tr>
-            <td><span class="rank-badge rank-1">1</span></td>
+            @if($index == 0)
+              <td><span class="rank-badge rank-1">{{ $index+1 }}</span></td>
+            @elseif($index == 1)
+              <td><span class="rank-badge rank-2">{{ $index+1 }}</span></td>
+            @elseif($index == 2)
+              <td><span class="rank-badge rank-3">{{ $index+1 }}</span></td>
+            @else
+              <td><span class="rank-badge">{{ $index+1 }}</span></td>
+            @endif
             <td>
               <div class="d-flex align-items-center">
+                @if(!empty($row->user_avatar))
+                <img src="{{asset('storage/'.$row->user_avatar)}}" alt="users picture profile" class="avatar">
+                @else
                 <img src="https://i.pravatar.cc/48?img=1" alt="Sarah Wijaya" class="avatar">
-                <span class="fw-semibold">Sarah Wijaya</span>
+                @endif
+                <span class="fw-semibold">{{ $row->user_name }}</span>
               </div>
             </td>
             <td class="text-center">5</td>
-            <td class="text-center fw-bold text-warning">980</td>
+            <td class="text-center fw-bold text-muted">{{ $row->score }}</td>
           </tr>
+          @empty
           <tr>
-            <td><span class="rank-badge rank-2">2</span></td>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="https://i.pravatar.cc/48?img=2" alt="Andi Nugroho" class="avatar">
-                <span class="fw-semibold">Andi Nugroho</span>
-              </div>
-            </td>
-            <td class="text-center">4</td>
-            <td class="text-center fw-bold text-secondary">920</td>
+            <td colspan="4" class="text-center text-muted">Tidak ada data siswa saat ini.</td>
           </tr>
-          <tr>
-            <td><span class="rank-badge rank-3">3</span></td>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="https://i.pravatar.cc/48?img=3" alt="Rina Putri" class="avatar">
-                <span class="fw-semibold">Rina Putri</span>
-              </div>
-            </td>
-            <td class="text-center">4</td>
-            <td class="text-center fw-bold text-secondary">870</td>
-          </tr>
-          <tr>
-            <td><span class="rank-badge bg-secondary text-white">4</span></td>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="https://i.pravatar.cc/48?img=4" alt="Budi Santoso" class="avatar">
-                <span class="fw-semibold">Budi Santoso</span>
-              </div>
-            </td>
-            <td class="text-center">3</td>
-            <td class="text-center fw-bold">830</td>
-          </tr>
-          <tr>
-            <td><span class="rank-badge bg-secondary text-white">5</span></td>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="https://i.pravatar.cc/48?img=5" alt="Lina Rahma" class="avatar">
-                <span class="fw-semibold">Lina Rahma</span>
-              </div>
-            </td>
-            <td class="text-center">3</td>
-            <td class="text-center fw-bold">800</td>
-          </tr>
+          @endforelse
           <!-- Add more students as needed -->
         </tbody>
       </table>

@@ -15,8 +15,12 @@ class LeaderboardSeeder extends Seeder
     {
         Leaderboard::create([
             'user_id' => 3,
-            'score' => 100,
-            'rank' => 16,
+            'score' => 800,
+        ]);
+
+        Leaderboard::create([
+            'user_id' => 4,
+            'score' => 1000,
         ]);
     }
 }
