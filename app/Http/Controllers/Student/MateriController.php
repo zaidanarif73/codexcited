@@ -15,4 +15,8 @@ class MateriController extends Controller
     public function index(){
         return view($this->view. "index");
     }
+
+    public function show($materi){
+        return view($this->view. "show", compact('materi'));
+    }
 }

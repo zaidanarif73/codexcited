@@ -48,43 +48,27 @@
     <div class="row g-4">
       <!-- Course Card 1 -->
       <div class="col-md-4">
-        <div class="card course-card position-relative h-100">
-          <span class="category-badge">Web Development</span>
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Web Design 101" class="course-image">
-          <div class="card-body">
-            <h5 class="card-title fw-bold">Web Design 101</h5>
-            <p class="card-text text-muted mb-2">Belajar dasar-dasar desain web, HTML, CSS, dan prinsip UI/UX untuk pemula.</p>
-            <div class="d-flex align-items-center mb-2">
-              <img src="https://i.pravatar.cc/36?img=12" alt="Instructor" class="instructor-img">
-              <span class="small text-muted">by <b>Rina Putri</b></span>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <span class="badge bg-success">Beginner</span>
-              <span class="text-primary fw-semibold"><i class="bi bi-clock me-1"></i>10 Jam</span>
+        <a href="{{ route('student.materi.show', ['materi' => 'materi web awal']) }}">
+          <div class="card course-card position-relative h-100">
+            <span class="category-badge">Web Development</span>
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Web Design 101" class="course-image">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Web Design 101</h5>
+              <p class="card-text text-muted mb-2">Belajar dasar-dasar desain web, HTML, CSS, dan prinsip UI/UX untuk pemula.</p>
+              <div class="d-flex align-items-center mb-2">
+                <img src="https://i.pravatar.cc/36?img=12" alt="Instructor" class="instructor-img">
+                <span class="small text-muted">by <b>Rina Putri</b></span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-success">Beginner</span>
+                <span class="text-primary fw-semibold"><i class="bi bi-clock me-1"></i>10 Jam</span>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
+        
       </div>
       <!-- Course Card 2 -->
-      <div class="col-md-4">
-        <div class="card course-card position-relative h-100">
-          <span class="category-badge bg-warning">Programming</span>
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="JavaScript Basics" class="course-image">
-          <div class="card-body">
-            <h5 class="card-title fw-bold">JavaScript Basics</h5>
-            <p class="card-text text-muted mb-2">Pelajari sintaks dasar, variabel, fungsi, dan logika pemrograman JavaScript.</p>
-            <div class="d-flex align-items-center mb-2">
-              <img src="https://i.pravatar.cc/36?img=8" alt="Instructor" class="instructor-img">
-              <span class="small text-muted">by <b>Andi Nugroho</b></span>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <span class="badge bg-info">Intermediate</span>
-              <span class="text-primary fw-semibold"><i class="bi bi-clock me-1"></i>12 Jam</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Course Card 3 -->
       <div class="col-md-4">
         <div class="card course-card position-relative h-100">
           <span class="category-badge bg-danger">CSS</span>
@@ -99,6 +83,25 @@
             <div class="d-flex justify-content-between align-items-center">
               <span class="badge bg-danger">Advanced</span>
               <span class="text-primary fw-semibold"><i class="bi bi-clock me-1"></i>15 Jam</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Course Card 3 -->
+      <div class="col-md-4">
+        <div class="card course-card position-relative h-100">
+          <span class="category-badge bg-warning">Programming</span>
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="JavaScript Basics" class="course-image">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">JavaScript Basics</h5>
+            <p class="card-text text-muted mb-2">Pelajari sintaks dasar, variabel, fungsi, dan logika pemrograman JavaScript.</p>
+            <div class="d-flex align-items-center mb-2">
+              <img src="https://i.pravatar.cc/36?img=8" alt="Instructor" class="instructor-img">
+              <span class="small text-muted">by <b>Andi Nugroho</b></span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge bg-info">Intermediate</span>
+              <span class="text-primary fw-semibold"><i class="bi bi-clock me-1"></i>12 Jam</span>
             </div>
           </div>
         </div>
