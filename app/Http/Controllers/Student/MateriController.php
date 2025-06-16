@@ -4,16 +4,26 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Materi;
 
 class MateriController extends Controller
 {
     public function __construct()
     {
         $this->view = "student.pages.materi.";
+        $this->materi = new Materi();
     }
 
-    public function index(){
-        return view($this->view. "index");
+    public function index(Request $request){
+
+        $table = $this->materi;
+        $table = $table->orderBy('created_at', 'desc')->get();
+
+        $data =  [
+            'table' => $table,
+        ];
+
+        return view($this->view. "index", $data);
     }
 
     public function show($materi){

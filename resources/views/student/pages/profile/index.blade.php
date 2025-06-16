@@ -39,9 +39,9 @@
 
     <div class="profile-header my-3">
         @if(!empty($user->avatar))
-            <img src="{{asset('storage/'.$user->avatar)}}" alt="Sarah Wijaya" class="profile-avatar shadow">
+            <img src="{{asset('storage/'.$user->avatar)}}" alt="{{ $user->name }}" class="profile-avatar shadow">
         @else
-            <img src="https://i.pravatar.cc/110?img=1" alt="Sarah Wijaya" class="profile-avatar shadow">
+            <img src="https://i.pravatar.cc/110?img=1" alt="{{ $user->name }}" class="profile-avatar shadow">
         @endif
         <h2 class="fw-bold mb-1">{{ $user->name }}</h2>
         <div class="text-info-50 mb-2">{{ $user->email }}</div>
