@@ -49,7 +49,7 @@
       <!-- Course Card 1 -->
       @forelse ($table as $index => $row)
       <div class="col-md-4">
-        <a href="{{ route('student.materi.show', ['materi' => $row->title]) }}">
+        <a href="{{ route('student.materi.show', ['id' => $row->id,'materi' => $row->title]) }}">
           <div class="card course-card position-relative h-100">
             <span class="category-badge">Web Development</span>
             @if(!empty($row->cover))

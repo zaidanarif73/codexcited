@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             LeaderboardSeeder::class,
             MateriSeeder::class,
+            MateriDetailSeeder::class,
             ]);
     }
 }

@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
         $userAdministrator->assignRole(RoleEnum::Student);
 
         $userAdministrator = User::firstOrCreate([
-            'email' => 'student2w@gmail.com'
+            'email' => 'student2@gmail.com'
             ],[
             'name' => 'Student2',
             'email' => 'student2@gmail.com',

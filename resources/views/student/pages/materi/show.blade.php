@@ -3,11 +3,30 @@
 @section('css')
 <style>
 
-    .sidebar {
-        background: #23283a;
-        padding: auto;
-        min-height: 100vh;
+    /* gaya umum */
+    .sidebar{
+        background:#23283a;
+        padding:1rem;          /* jangan pakai padding:auto; */
     }
+
+    /* --- HANYA untuk layar besar (desktop) --- */
+    @media (min-width:992px){   /* ≥ lg */
+        .sidebar{
+            min-height:100vh;   /* tetap full‑height di desktop */
+            overflow-y:auto;    /* bisa di‑scroll kalau lesson banyak */
+        }
+    }
+
+    /* --- Untuk layar ≤ 991 px (tablet & mobile) --- */
+    @media (max-width:991.98px){
+        .sidebar{
+            min-height:auto;    /* biarkan tingginya mengikuti konten */
+        }
+        /* rapatkan jarak antar lesson supaya tak terlalu panjang */
+        .sidebar .my-4{ margin:1rem 0; }
+        .sidebar .progress{ height:18px; }
+    }
+
 
 </style>
 @endsection
@@ -16,7 +35,7 @@
 <div class="py-2 container-fluid">
     <div class="row">
         <!-- Sidebar -->
-        <div class="col-md-5 col-lg-3 sidebar">
+        <div class="col-lg-3 sidebar">
             <div class="course-header">
                 Roadmap Materi - <span class="fw-bold">Learn HTML</span>
             </div>
@@ -54,38 +73,50 @@
 
         </div>
         <!-- Main Content -->
-        <div data-bs-spy="scroll"  data-bs-smooth-scroll="true" class="col-md-7 col-lg-9">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
+        <div data-bs-spy="scroll"  data-bs-smooth-scroll="true" class="col-lg-9">
+            <div>
+                @forelse ($materiDetails as $index => $row)
+                    <h1>{{ $row->title }}</h1>
+                    <p>{{ $row->description }}</p>
+                @empty
+                @endforelse
+                <p>
+                    
+                
+                    {{-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus! --}}
 
+                </p>
+            </div>
+            
         </div>
     </div>
 </div>
