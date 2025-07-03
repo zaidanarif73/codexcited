@@ -73,50 +73,43 @@
 
         </div>
         <!-- Main Content -->
-        <div data-bs-spy="scroll"  data-bs-smooth-scroll="true" class="col-lg-9">
-            <div>
+        <div data-bs-spy="scroll" data-bs-smooth-scroll="true" class="col-lg-9">
+
+            {{-- Satu container accordion saja --}}
+            <div class="accordion" id="materiAccordion">
                 @forelse ($materiDetails as $index => $row)
-                    <h1>{{ $row->title }}</h1>
-                    <p>{{ $row->description }}</p>
+                    @php
+                        $headingId  = 'heading'.$index;
+                        $collapseId = 'collapse'.$index;
+                    @endphp
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="{{ $headingId }}">
+                            <button
+                                class="accordion-button {{ $loop->first ? '' : 'collapsed' }}"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#{{ $collapseId }}"
+                                aria-expanded="{{ $loop->first ? 'true' : 'false' }}"
+                                aria-controls="{{ $collapseId }}">
+                                {{ $index + 1 }}.&nbsp;{{ $row->title }}
+                            </button>
+                        </h2>
+
+                        {{--  HAPUS data-bs-parent supaya panel lain tak ditutup otomatis --}}
+                        <div id="{{ $collapseId }}"
+                            class="accordion-collapse collapse {{ $loop->first ? 'show' : '' }}"
+                            aria-labelledby="{{ $headingId }}">
+                            <div class="accordion-body">
+                                {{ $row->description }}
+                            </div>
+                        </div>
+                    </div>
                 @empty
+                    <p>No entries</p>
                 @endforelse
-                <p>
-                    
-                
-                    {{-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
-
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
-
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum sunt obcaecati quo blanditiis magni eos hic, voluptatem ad laudantium exercitationem cupiditate quibusdam et saepe, repellendus, culpa praesentium animi quam? Quis!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores recusandae doloribus nesciunt nostrum temporibus, nemo autem atque nihil magni impedit? Consequuntur repellat maiores, tenetur quibusdam illo harum tempore alias enim.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto possimus molestias quos aspernatur, provident eveniet aperiam iure magnam praesentium, molestiae alias blanditiis dignissimos, cum omnis vero rem dicta? Ad, natus! --}}
-
-                </p>
             </div>
-            
+
         </div>
     </div>
 </div>
