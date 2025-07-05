@@ -81,6 +81,10 @@ body.dark-mode {
   .dark-mode .profile-card{
     background: #23283a !important;
   }
+  .dark-mode .accordion-collapse {
+    background: #23283a !important;
+    color: #f0f0f0 !important;
+  }
 
 #darkModeToggle {
     transition: background 0.3s, box-shadow 0.3s;

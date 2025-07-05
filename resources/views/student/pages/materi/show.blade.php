@@ -27,6 +27,14 @@
         .sidebar .progress{ height:18px; }
     }
 
+    .accordion-button {
+        background: #06BBCC;
+        color: #f0f0f0;
+    }
+    .accordion-button:not(.collapsed){
+        background: #06BBCC;
+        color: #f0f0f0;
+    }
 
 </style>
 @endsection
@@ -83,7 +91,7 @@
                         $collapseId = 'collapse'.$index;
                     @endphp
 
-                    <div class="accordion-item">
+                    <div class="accordion-item my-3">
                         <h2 class="accordion-header" id="{{ $headingId }}">
                             <button
                                 class="accordion-button {{ $loop->first ? '' : 'collapsed' }}"
@@ -114,4 +122,3 @@
     </div>
 </div>
 @endsection
-
