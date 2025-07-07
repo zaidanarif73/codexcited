@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MateriProgress;
+use App\Models\Score;
 
 class MateriProgressController extends Controller
 {
@@ -20,6 +21,15 @@ class MateriProgressController extends Controller
             ['progress' => $data['progress']]
         );
 
-        return response()->json(['saved' => $mp->progress]);
+        // Update total progress for the user on skor
+        $total = MateriProgress::where('user_id', $r->user()->id)
+            ->sum('progress');
+            
+        Score::updateOrCreate(
+            ['user_id' => $r->user()->id],
+            ['score'   => $total]
+        );
+        
+        return response()->json(['saved' => $mp->progress,'total_score'  => $total]);
     }
 }
