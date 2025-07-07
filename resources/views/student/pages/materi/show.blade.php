@@ -45,39 +45,21 @@
         <!-- Sidebar -->
         <div class="col-lg-3 sidebar">
             <div class="course-header">
-                Roadmap Materi - <span class="fw-bold">Learn HTML</span>
+                Roadmap Materi - <span class="fw-bold">{{ $materi->title }}</span>
             </div>
             
-            <div class="my-4">
-                <span class="fw-bold text-white">Lesson 1 What Code is Like</span>
-                <div class="progress" style="height: 24px; background: #44436a;">
-                <div class="progress-bar" role="progressbar" style="width: 100%; background: #7fffd4; color: #23223a;">100%</div>
+                    {{-- ===== SIDEBAR ===== --}}
+            @foreach($materiDetails as $row)
+            <div class="my-3">
+                <span class="fw-bold text-white">{{ $loop->iteration }}. {{ $row->title }}</span>
+                <div class="progress" style="height:24px;background:#44436a;">
+                <div class="progress-bar"
+                    id="bar-{{ $row->id }}"
+                    data-id="{{ $row->id }}"
+                    style="width:0%;background:#7fffd4;color:#23223a;">0%</div>
                 </div>
             </div>
-            <div class="my-4">
-                <span class="fw-bold text-white">Lesson 2 Your First Error</span>
-                <div class="progress" style="height: 24px; background: #44436a;">
-                <div class="progress-bar" role="progressbar" style="width: 100%; background: #7fffd4; color: #23223a;">100%</div>
-                </div>
-            </div>
-            <div class="my-4">
-                <span class="fw-bold text-white">Lesson 3 We Stand on the Shoulders of Gia</span>
-                <div class="progress" style="height: 24px; background: #44436a;">
-                <div class="progress-bar" role="progressbar" style="width: 100%; background: #7fffd4; color: #23223a;">100%</div>
-                </div>
-            </div>
-            <div class="my-4">
-                <span class="fw-bold text-white">Lesson 4 Drawing a Rectangle</span>
-                <div class="progress" style="height: 24px; background: #44436a;">
-                <div class="progress-bar" role="progressbar" style="width: 100%; background: #7fffd4; color: #23223a;">100%</div>
-                </div>
-            </div>
-            <div class="my-4">
-                <span class="fw-bold text-white">Lesson 5 Coding Your First Function</span>
-                <div class="progress" style="height: 24px; background: #44436a;">
-                <div class="progress-bar" role="progressbar" style="width: 52%; background: #7fffd4; color: #23223a;">52%</div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
         <!-- Main Content -->
@@ -85,40 +67,98 @@
 
             {{-- Satu container accordion saja --}}
             <div class="accordion" id="materiAccordion">
-                @forelse ($materiDetails as $index => $row)
-                    @php
-                        $headingId  = 'heading'.$index;
-                        $collapseId = 'collapse'.$index;
-                    @endphp
-
-                    <div class="accordion-item my-3">
-                        <h2 class="accordion-header" id="{{ $headingId }}">
-                            <button
-                                class="accordion-button {{ $loop->first ? '' : 'collapsed' }}"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#{{ $collapseId }}"
-                                aria-expanded="{{ $loop->first ? 'true' : 'false' }}"
-                                aria-controls="{{ $collapseId }}">
-                                {{ $index + 1 }}.&nbsp;{{ $row->title }}
-                            </button>
-                        </h2>
-
-                        {{--  HAPUS data-bs-parent supaya panel lain tak ditutup otomatis --}}
-                        <div id="{{ $collapseId }}"
-                            class="accordion-collapse collapse {{ $loop->first ? 'show' : '' }}"
-                            aria-labelledby="{{ $headingId }}">
-                            <div class="accordion-body">
-                                {{ $row->description }}
-                            </div>
-                        </div>
-                    </div>
-                @empty
-                    <p>No entries</p>
-                @endforelse
+                    {{-- ===== ACCORDION ===== --}}
+            @foreach($materiDetails as $row)
+            @php $cid = 'collapse'.$row->id; @endphp
+            <div class="accordion-item my-2">
+                <h2 class="accordion-header" id="h{{ $row->id }}">
+                <button class="accordion-button {{ $loop->first?'':'collapsed' }}"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#{{ $cid }}">
+                    {{ $loop->iteration }}.&nbsp;{{ $row->title }}
+                </button>
+                </h2>
+                <div id="{{ $cid }}"
+                    class="accordion-collapse collapse {{ $loop->first?'show':'' }}"
+                    data-id="{{ $row->id }}">
+                <div class="accordion-body">{{ $row->description }}</div>
+                </div>
             </div>
+            @endforeach
 
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+const progressFromServer = @json($progressMap);   // {id: %}
+const updateUrl          = "{{ route('progress.update') }}";
+const csrfToken          = "{{ csrf_token() }}";
+$(function () {
+
+    /* Konstanta */
+    const TOTAL  = 60,                   // detik
+          STEP   = 100 / TOTAL,
+          prog   = {...progressFromServer}, // clone
+          timers = {};                   // {id: intervalID}
+
+    /* 1. Render posisi awal */
+    $.each(prog, function (id, pct) {
+        $('#bar-' + id)
+          .css('width', pct + '%')
+          .text(pct + '%');
+    });
+
+    /* 2. Kirim ke server (tiap 10 % atau 100 %) */
+    function send(id, pct) {
+        $.ajax({
+            url: updateUrl,
+            method: 'POST',
+            headers: { 'X-CSRF-TOKEN': csrfToken },
+            data: { materi_detail_id: id, progress: pct },
+            error: err => console.error('save‑err', err)
+        });
+    }
+
+    /* 3. Timer per materi */
+    function start(id) {
+        if (timers[id] || (prog[id] || 0) >= 100) return;
+
+        const $bar = $('#bar-' + id);
+
+        timers[id] = setInterval(() => {
+            prog[id] = (prog[id] || 0) + STEP;
+            if (prog[id] >= 100) {
+                prog[id] = 100;
+                clearInterval(timers[id]);
+                delete timers[id];
+            }
+
+            $bar.css('width', prog[id] + '%')
+                .text(Math.round(prog[id]) + '%');
+
+            if (prog[id] % 10 < STEP || prog[id] === 100) {
+                send(id, Math.round(prog[id]));
+            }
+        }, 1000);
+    }
+    function stop(id) {
+        if (timers[id]) {
+            clearInterval(timers[id]);
+            delete timers[id];
+        }
+    }
+
+    /* 4. Kaitkan event Bootstrap collapse */
+    $('.accordion-collapse')
+        .on('shown.bs.collapse', function () { start($(this).data('id')); })
+        .on('hide.bs.collapse',  function () { stop($(this).data('id')); });
+
+    /* 5. Panel pertama (jika show) */
+    const $first = $('.accordion-collapse.show').first();
+    if ($first.length) start($first.data('id'));
+});
+</script>
 @endsection

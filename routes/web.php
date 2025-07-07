@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Student\MateriProgressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,4 +63,10 @@ Route::group(["middleware" => ["dashboard.access"], "namespace" => "App\Http\Con
 
 
 });
+
+//route for progress update
+Route::middleware('auth')->post('/progress/update', [MateriProgressController::class, 'update'])
+    ->name('progress.update');
+
+
 
