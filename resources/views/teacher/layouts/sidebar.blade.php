@@ -45,7 +45,7 @@
                 <a href="" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.menu')) active @endif">
                     <i class="bx bx-menu col-3 bx-tada-hover"></i>
                     <p>
-                    Tambah Materi
+                    Materi
                     </p>
                 </a>
                 </li>
@@ -53,14 +53,13 @@
                 <li class="nav-item">
                 <a href="" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.banner')) active @endif">
                     <col class="row">
-                    <i class="bx bx-images col-3 bx-tada-hover"></i>
+                    <i class='bx  bx-signal-4 col-3 bx-tada-hover'  ></i> 
                     <p>
                     Leaderboard
                     </p>
                     </col>
                 </a>
                 </li>
-                @endif
                 
                 <li class="nav-item">
                 <a href="" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.berita')) active @endif">
@@ -73,10 +72,6 @@
                 </a>
                 </li>
 
-                @if(Auth::user()->hasRole([
-                    \App\Enums\RoleEnum::SuperAdmin,
-                    \App\Enums\RoleEnum::Teacher,
-                ]))
                 <li class="nav-item">
                 <a href="" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.user')) active @endif">
                     <i class='bx bx-user col-3 bx-tada-hover'></i>
