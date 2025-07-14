@@ -34,7 +34,7 @@
         <div class="inner">
         <h3>333</h3>
 
-        <p>Banner</p>
+        <p>Materi</p>
         </div>
         <div class="icon">
             <i class='bx bx-file'></i>
@@ -49,7 +49,7 @@
         <div class="inner">
             <h3>324</h3>
 
-        <p>Berita</p>
+        <p>Siswa</p>
         </div>
         <div class="icon">
             <i class='bx bxs-news' ></i>
@@ -64,7 +64,7 @@
         <div class="inner">
         <h3>1234</h3>
 
-        <p>Menu</p>
+        <p>Interaksi Siswa</p>
         </div>
         <div class="icon">
             <i class='bx bx-door-open'></i>
@@ -78,66 +78,10 @@
         <div class="small-box bg-danger">
             <div class="inner">
             <h3>44</h3>
-            <p>Galeri</p>
+            <p>User Online</p>
             </div>
             <div class="icon">
                 <i class='bx bx-image-alt'></i>
-            </div>
-            <a href="" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-secondary">
-            <div class="inner">
-                <h3>234</h3>
-                <p>Layanan</p>
-            </div>
-            <div class="icon">
-                <i class='bx bx-message-check'></i>
-            </div>
-            <a href="" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-primary">
-            <div class="inner">
-                <h3>23</h3>
-                <p>Tautan</p>
-            </div>
-            <div class="icon">
-                <i class='bx bx-link-alt'></i>
-            </div>
-            <a href="" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-info">
-            <div class="inner">
-                <h3>12</h3>
-                <p>Inovasi</p>
-            </div>
-            <div class="icon">
-                <i class='bx bx-bulb'></i>
-            </div>
-            <a href="" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-success">
-            <div class="inner">
-                <h3>66</h3>
-                <p>Informasi Publik</p>
-            </div>
-            <div class="icon">
-                <i class='bx bx-info-circle'></i>
             </div>
             <a href="" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>
         </div>

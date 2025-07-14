@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Student\MateriProgressController;
+use App\Enums\RoleEnum;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,12 +36,18 @@ Route::group(["namespace" => "App\Http\Controllers\Guest", "as" => "guest."], fu
 });
 
 //TEACHER ROUTES
-Route::group(["middleware" => ["dashboard.access"], "namespace" => "App\Http\Controllers\Teacher", "as" => "teacher.", "prefix" => "teacher"], function () {
+Route::group(["middleware" => ["teacher.access"], "namespace" => "App\Http\Controllers\Teacher", "as" => "teacher.", "prefix" => "teacher"], function () {
     Route::get("/", "DashboardController@index")->name('dashboard.index');
+
+    Route::group(["as" => "materi.", "prefix" => "materi"], function () {
+        Route::get("/", "MateriController@index")->name('index');
+        Route::get("/create", "MateriController@create")->name('create');
+        Route::post("/", "MateriController@store")->name('store');
+    });
 });
 
 //STUDENT ROUTES
-Route::group(["middleware" => ["dashboard.access"], "namespace" => "App\Http\Controllers\Student", "as" => "student.", "prefix" => "student"], function () {
+Route::group(["middleware" => ["student.access"], "namespace" => "App\Http\Controllers\Student", "as" => "student.", "prefix" => "student"], function () {
     Route::get("/", "DashboardController@index")->name('dashboard.index');
 
     Route::group(["as" => "materi.", "prefix" => "materi"], function () {

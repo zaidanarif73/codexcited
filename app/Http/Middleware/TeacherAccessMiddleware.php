@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Enums\RoleEnum;
 use Auth;
 
-class DashboardAccessMiddleware
+class TeacherAccessMiddleware
 {
 
     // public function handle(Request $request, Closure $next): Response
@@ -17,8 +17,8 @@ class DashboardAccessMiddleware
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user(); 
-        if (empty($user) || !$user->hasRole([RoleEnum::SuperAdmin, RoleEnum::Teacher, RoleEnum::Student])) {
-            alert()->html('Gagal',"Anda tidak diperbolehkan mengakses halaman ini",'error');
+        if (empty($user) || !$user->hasRole([RoleEnum::Teacher])) {
+            alert()->html('Gagal',"Anda sedang login sebagai teacher!",'error');
             
             if($user){
                 Auth::logout();

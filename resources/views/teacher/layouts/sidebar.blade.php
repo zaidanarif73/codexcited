@@ -42,7 +42,7 @@
                     \App\Enums\RoleEnum::Teacher,
                 ]))
                 <li class="nav-item">
-                <a href="" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.menu')) active @endif">
+                <a href="{{ route('teacher.materi.index') }}" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.menu')) active @endif">
                     <i class="bx bx-menu col-3 bx-tada-hover"></i>
                     <p>
                     Materi
