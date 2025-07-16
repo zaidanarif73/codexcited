@@ -51,7 +51,16 @@
       <div class="col-md-4">
         <a href="{{ route('student.materi.show', ['id' => $row->id,'materi' => $row->title]) }}">
           <div class="card course-card position-relative h-100">
-            <span class="category-badge">Web Development</span>
+            @if($row->type == 'html')
+              <span class="category-badge bg-success">HTML</span>
+            @elseif($row->type == 'css')
+              <span class="category-badge bg-secondary">CSS</span>
+            @elseif($row->type == 'javascript')
+              <span class="category-badge bg-warning">JavaScript</span>
+            @else
+              <span class="category-badge bg-dark">Lainnya</span>
+            @endif
+
             @if(!empty($row->cover))
               <img src="{{asset('storage/'.$row->cover)}}" alt="{{ $row->cover }}" class="course-image">
             @else
@@ -65,7 +74,15 @@
                 <span class="small text-muted">by <b>Rina Putri</b></span>
               </div>
               <div class="d-flex justify-content-between align-items-center">
-                <span class="badge bg-success">Beginner</span>
+                @if($row->difficulty == 1)
+                  <span class="badge bg-primary">Pemula</span>
+                @elseif($row->difficulty == 2)
+                  <span class="badge bg-primary">Sedang</span>
+                @elseif($row->difficulty == 3)
+                  <span class="badge bg-primary">Lanjutan</span> 
+                @else
+                  <span class="badge bg-primary">Tidak Diketahui</span>
+                @endif                  
                 <span class="text-primary fw-semibold"><i class="bi bi-clock me-1"></i>10 Jam</span>
               </div>
             </div>

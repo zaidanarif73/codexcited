@@ -16,6 +16,8 @@ class MateriSeeder extends Seeder
         Materi::create([
             'title' => 'Pengantar Pemrograman',
             'description' => 'Materi ini memberikan pengantar dasar-dasar pemrograman, termasuk konsep variabel, tipe data, dan struktur kontrol.',
+            'type' => 'html',
+            'difficulty' => 1, // 1 = Mudah, 2 = Sedang, 3 = Sulit
         ]);
     }
 }

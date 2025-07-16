@@ -34,7 +34,7 @@
                                                 value="{{ old('title') }}" required>
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-5">
+                                    <div class="form-group row">
                                         <label class="col-md-2 col-form-label" for="description">Deskripsi <span
                                                 class="text-danger">*</span></label>
                                         <div class="col-md-10">
@@ -43,10 +43,32 @@
                                             {{-- @trix(\App\Models\Materi::class, 'content') --}}
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-5">
+                                    <div class="form-group row">
                                         <label class="col-md-2 col-form-label">Cover<span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="file" name="cover" accept="image/*" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">Tipe Materi <span class="text-danger">*</span></label>
+                                        <div class="col-md-10">
+                                            <select name="type" class="form-select" required>
+                                                <option value="">Pilih Tipe Materi</option>
+                                                <option value="html">HTML</option>
+                                                <option value="css">CSS</option>
+                                                <option value="javascript">Javascript</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">Tingkat Kesulitan <span class="text-danger">*</span></label>
+                                        <div class="col-md-10">
+                                            <select name="difficulty" class="form-select" required>
+                                                <option value="">Pilih Tingkat Kesulitan</option>
+                                                <option value="1">Pemula</option>
+                                                <option value="2">Sedang</option>
+                                                <option value="3">Mahir</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

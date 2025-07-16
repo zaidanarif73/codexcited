@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string("cover")->nullable();
+            $table->string("type");
+            $table->integer("difficulty");
             $table->text('description');
             $table->timestamps();
         });

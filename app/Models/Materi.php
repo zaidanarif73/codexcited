@@ -14,5 +14,7 @@ class Materi extends Model
         'title',
         'description',
         'cover',
+        'type',
+        'difficulty',
     ];
 }

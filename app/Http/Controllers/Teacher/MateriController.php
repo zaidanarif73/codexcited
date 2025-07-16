@@ -43,6 +43,8 @@ class MateriController extends Controller
             $title = $request->title;
             $description = $request->description;
             $cover = $request->file('cover');
+            $type = $request->type;
+            $difficulty = $request->difficulty;
 
             if($cover){
                 $upload = UploadHelper::upload_file($cover,'cover materi',['jpeg','jpg','png','gif']);
@@ -56,6 +58,8 @@ class MateriController extends Controller
                     'title' => $title,
                     'description' => $description,
                     'cover' => $cover,
+                    'type' => $type,
+                    'difficulty' => $difficulty,
                 ]);
             }
             alert()->html('Berhasil','Data berhasil ditambahkan','success'); 
@@ -68,5 +72,6 @@ class MateriController extends Controller
 
             return redirect()->route($this->route."create")->withInput();
         }
+ 
     }
 }
