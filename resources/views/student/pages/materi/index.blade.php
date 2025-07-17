@@ -36,6 +36,10 @@
       border-radius: 999px;
       z-index: 2;
     }
+    .card-img-top {
+      max-height: 180px;
+      object-fit: cover;
+    }
   </style>
 @endsection
 
@@ -48,8 +52,8 @@
     <div class="row g-4">
       <!-- Course Card 1 -->
       @forelse ($table as $index => $row)
-      <div class="col-md-4">
-        <a href="{{ route('student.materi.show', ['id' => $row->id,'materi' => $row->title]) }}">
+      <div class="col-12 col-sm-6 col-md-4">
+        <a href="{{ route('student.materi.show', ['id' => $row->id,'slug' => $row->slug]) }}">
           <div class="card course-card position-relative h-100">
             @if($row->type == 'html')
               <span class="category-badge bg-success">HTML</span>
@@ -58,7 +62,7 @@
             @elseif($row->type == 'javascript')
               <span class="category-badge bg-warning">JavaScript</span>
             @else
-              <span class="category-badge bg-dark">Lainnya</span>
+              <span class="category-badge bg-dark">{{ $row->type }}</span>
             @endif
 
             @if(!empty($row->cover))
@@ -68,7 +72,7 @@
             @endif
             <div class="card-body">
               <h5 class="card-title fw-bold">{{ $row->title }}</h5>
-              <p class="card-text text-muted mb-2">{{ $row->description }}</p>
+              <p class="card-text text-muted mb-2">{{ Str::limit($row->description, 200) }}</p>
               <div class="d-flex align-items-center mb-2">
                 <img src="https://i.pravatar.cc/36?img=12" alt="Instructor" class="instructor-img">
                 <span class="small text-muted">by <b>Rina Putri</b></span>
@@ -96,46 +100,6 @@
         </div>
       </div>
       @endforelse
-      {{-- <!-- Course Card 1 -->
-      {{-- <!-- Course Card 2 -->
-      <div class="col-md-4">
-        <div class="card course-card position-relative h-100">
-          <span class="category-badge bg-danger">CSS</span>
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Advanced CSS" class="course-image">
-          <div class="card-body">
-            <h5 class="card-title fw-bold">Advanced CSS</h5>
-            <p class="card-text text-muted mb-2">Tingkatkan kemampuan styling dengan Flexbox, Grid, animasi, dan teknik modern CSS.</p>
-            <div class="d-flex align-items-center mb-2">
-              <img src="https://i.pravatar.cc/36?img=5" alt="Instructor" class="instructor-img">
-              <span class="small text-muted">by <b>Sarah Wijaya</b></span>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <span class="badge bg-danger">Advanced</span>
-              <span class="text-primary fw-semibold"><i class="bi bi-clock me-1"></i>15 Jam</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Course Card 3 -->
-      <div class="col-md-4">
-        <div class="card course-card position-relative h-100">
-          <span class="category-badge bg-warning">Programming</span>
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="JavaScript Basics" class="course-image">
-          <div class="card-body">
-            <h5 class="card-title fw-bold">JavaScript Basics</h5>
-            <p class="card-text text-muted mb-2">Pelajari sintaks dasar, variabel, fungsi, dan logika pemrograman JavaScript.</p>
-            <div class="d-flex align-items-center mb-2">
-              <img src="https://i.pravatar.cc/36?img=8" alt="Instructor" class="instructor-img">
-              <span class="small text-muted">by <b>Andi Nugroho</b></span>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <span class="badge bg-info">Intermediate</span>
-              <span class="text-primary fw-semibold"><i class="bi bi-clock me-1"></i>12 Jam</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Add more course cards as needed --> --}}
     </div>
   </div>
 @endsection

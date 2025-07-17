@@ -21,6 +21,16 @@
             <div class="col-xl-12">
                 <div class="card m-b-30">
                     <div class="card-body">
+                        <!-- Display validation errors if any -->
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{ route('teacher.materi.store') }}" method="POST" autocomplete="off"
                             onsubmit="confirm('Apakah anda yakin ingin mengirim data ini?')" enctype="multipart/form-data">
                             @csrf
@@ -46,18 +56,24 @@
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label">Cover<span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="file" name="cover" accept="image/*" required>
+                                            <input class="form-control" type="file" name="cover" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-2 col-form-label">Tipe Materi <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <select name="type" class="form-select" required>
+                                            <select name="type" class="form-select" id="typeSelect" required>
                                                 <option value="">Pilih Tipe Materi</option>
-                                                <option value="html">HTML</option>
-                                                <option value="css">CSS</option>
-                                                <option value="javascript">Javascript</option>
+                                                <option value="html" {{ old('type') == 'html' ? 'selected' : '' }}>HTML</option>
+                                                <option value="css" {{ old('type') == 'css' ? 'selected' : '' }}>CSS</option>
+                                                <option value="javascript" {{ old('type') == 'javascript' ? 'selected' : '' }}>Javascript</option>
+                                                <option value="custom" {{ old('type') == 'custom' ? 'selected' : '' }}>Lainnya...</option>
                                             </select>
+
+                                            {{-- input manual muncul jika pilih "custom" --}}
+                                            <input type="text" name="custom_type" id="customTypeInput" class="form-control mt-2"
+                                                placeholder="Tulis tipe materi secara manual"
+                                                value="{{ old('custom_type') }}" style="display: none;">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -90,6 +106,26 @@
         </div>
     </div>
 @endsection
-@section('script')
 
+@section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const select = document.getElementById('typeSelect');
+        const customInput = document.getElementById('customTypeInput');
+
+        function toggleCustomInput() {
+            if (select.value === 'custom') {
+                customInput.style.display = 'block';
+                customInput.required = true;
+            } else {
+                customInput.style.display = 'none';
+                customInput.required = false;
+            }
+        }
+
+        // Panggil saat load dan saat berubah
+        toggleCustomInput();
+        select.addEventListener('change', toggleCustomInput);
+    });
+</script>
 @endsection

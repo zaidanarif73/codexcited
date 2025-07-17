@@ -24,17 +24,25 @@ class StoreRequest extends FormRequest
         return [
             'title' => [
                 'required',
+                'max:100',
+                'not_regex:/[\/]/' 
             ],
             'description'=> [
                 'required',
-                ''
+                'max:200'
                 ],
             'cover' => [
-                'required',
                 'image',
                 'max:2048',
                 'mimes:jpeg,bmp,png,gif,svg,jpg',
             ],
+            'type' => [
+                'required',
+            ],
+            'difficulty' => [
+                'required',
+            ],
+            
         ];
     }
 
@@ -42,11 +50,16 @@ class StoreRequest extends FormRequest
     {
         return [
             'title.required' => 'Judul harus diisi',
+            'title.max' => 'Judul tidak boleh lebih dari 100 karakter',
+            'title.not_regex' => 'Judul tidak boleh mengandung karakter /',
             'description.required' => 'Deksripsi harus diisi',
+            'description.max' => 'Deksripsi tidak boleh lebih dari 200 karakter',
             'cover.required' => 'File harus diisi',
             'cover.image' => 'Foto harus berupa gambar',
             'cover.mimes' => 'Foto harus berupa jpeg, bmp, png, gif, svg , jpg',
             'cover.max' => 'Foto tidak boleh lebih dari 2MB',
+            'type.required' => 'Tipe materi harus diisi',
+            'difficulty.required' => 'Tingkat kesulitan harus diisi',
         ];
     }
 }

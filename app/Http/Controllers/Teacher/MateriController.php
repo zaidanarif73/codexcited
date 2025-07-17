@@ -8,6 +8,7 @@ use App\Models\Materi; // Assuming you have a Materi model
 use Illuminate\Pagination\Paginator;
 use App\Http\Requests\Materi\StoreRequest;
 use App\Helpers\UploadHelper;
+use Illuminate\Support\Str;
 use Error;
 
 class MateriController extends Controller
@@ -43,25 +44,30 @@ class MateriController extends Controller
             $title = $request->title;
             $description = $request->description;
             $cover = $request->file('cover');
-            $type = $request->type;
             $difficulty = $request->difficulty;
+            $type = $request->type === 'custom' && $request->filled('custom_type')? $request->custom_type : $request->type;
+            $slug = Str::slug($title);
 
-            if($cover){
-                $upload = UploadHelper::upload_file($cover,'cover materi',['jpeg','jpg','png','gif']);
+            $coverPath = null;
 
-                if($upload["IsError"] == TRUE){
+            if ($cover) {
+                $upload = UploadHelper::upload_file($cover, 'cover materi', ['jpeg','jpg','png','gif']);
+
+                if ($upload["IsError"] == true) {
                     throw new Error($upload["Message"]);
                 }
 
-                $cover = $upload["Path"];
-                $create = $this->materi->create([
-                    'title' => $title,
-                    'description' => $description,
-                    'cover' => $cover,
-                    'type' => $type,
-                    'difficulty' => $difficulty,
-                ]);
+                $coverPath = $upload["Path"];
             }
+
+            $create = $this->materi->create([
+                'title' => $title,
+                'slug' => $slug,
+                'description' => $description,
+                'cover' => $coverPath,
+                'type' => $type,
+                'difficulty' => $difficulty,
+            ]);
             alert()->html('Berhasil','Data berhasil ditambahkan','success'); 
             return redirect()->route($this->route."index");
 

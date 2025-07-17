@@ -19,7 +19,7 @@ class MateriController extends Controller
     public function index(Request $request){
 
         $table = $this->materi;
-        $table = $table->orderBy('created_at', 'desc')->get();
+        $table = $table->orderBy('difficulty', 'asc')->get();
 
         $data =  [
             'table' => $table,

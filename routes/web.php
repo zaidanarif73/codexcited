@@ -52,7 +52,7 @@ Route::group(["middleware" => ["student.access"], "namespace" => "App\Http\Contr
 
     Route::group(["as" => "materi.", "prefix" => "materi"], function () {
         Route::get("/", "MateriController@index")->name('index');
-        Route::get("/{id}/{materi}", "MateriController@show")->name('show');
+        Route::get("/{id}/{slug}", "MateriController@show")->name('show');
     });
 
     Route::group(["as" => "discussion.", "prefix" => "discussion"], function () {
