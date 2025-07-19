@@ -81,7 +81,7 @@
                 <div id="{{ $cid }}"
                     class="accordion-collapse collapse {{ $loop->first?'show':'' }}"
                     data-id="{{ $row->id }}">
-                <div class="accordion-body">{{ $row->description }}</div>
+                <div class="accordion-body">{!! $row->description !!}</div>
                 </div>
             </div>
             @endforeach
@@ -107,8 +107,8 @@ $(function () {
     /* 1. Render posisi awal */
     $.each(prog, function (id, pct) {
         $('#bar-' + id)
-          .css('width', pct + '%')
-          .text(pct + '%');
+            .css('width', pct + '%')
+            .text(pct + '%');
     });
 
     /* 2. Kirim ke server (tiap 10 % atau 100 %) */

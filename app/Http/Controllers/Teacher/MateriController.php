@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Materi; // Assuming you have a Materi model
+use App\Models\MateriDetail; // Assuming you have a MateriDetail model
 use Illuminate\Pagination\Paginator;
 use App\Http\Requests\Materi\StoreRequest;
 use App\Helpers\UploadHelper;
@@ -140,4 +141,54 @@ class MateriController extends Controller
             return redirect()->route($this->route."edit", ['id' => $id])->withInput();
         }
     }
+
+    public function destroy($id)
+    {
+        try {
+            $materi = $this->materi->findOrFail($id);
+            $materi->delete(); // akan otomatis menghapus detail & progress karena cascade
+
+            alert()->success('Berhasil', 'Materi dan semua data terkait berhasil dihapus');
+            return redirect()->route($this->route . "index");
+        } catch (\Throwable $e) {
+            alert()->error('Gagal', $e->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    //Materi Detail Section
+    public function show($id)
+    {
+        $materi = Materi::with('details')->findOrFail($id);
+
+        return view('teacher.pages.materi.detail', compact('materi'));
+    }
+
+    public function storeDetail(Request $request, $id)
+    {
+        try {
+            $materi = Materi::findOrFail($id);
+            $submateriList = $request->input('submateri');
+
+            if (!is_array($submateriList)) {
+                throw new \Exception("Format submateri tidak valid.");
+            }
+
+            foreach ($submateriList as $sub) {
+                MateriDetail::create([
+                    'materi_id' => $materi->id,
+                    'title' => $sub['title'] ?? '',
+                    'description' => $sub['description'] ?? '',
+                ]);
+            }
+
+            alert()->html('Berhasil', 'Semua submateri berhasil ditambahkan', 'success');
+            return redirect()->route($this->route . "show", $materi->id);
+
+        } catch (\Throwable $e) {
+            alert()->error('Gagal', $e->getMessage());
+            return redirect()->back()->withInput();
+        }
+    }
+
 }

@@ -18,4 +18,9 @@ class Materi extends Model
         'type',
         'difficulty',
     ];
+
+    public function details()
+    {
+        return $this->hasMany(MateriDetail::class);
+    }
 }

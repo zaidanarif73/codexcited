@@ -45,6 +45,10 @@ Route::group(["middleware" => ["teacher.access"], "namespace" => "App\Http\Contr
         Route::post("/", "MateriController@store")->name('store');
         Route::get("/{id}/edit", "MateriController@edit")->name('edit');
         Route::put("/{id}", "MateriController@update")->name('update');
+        Route::delete("/{id}", "MateriController@destroy")->name('destroy');
+        Route::get("/{id}/detail", "MateriController@show")->name('show');
+        Route::post("/{id}/detail", "MateriController@storeDetail")->name('detail.store');
+        
     });
 });
 
@@ -76,6 +80,9 @@ Route::group(["middleware" => ["student.access"], "namespace" => "App\Http\Contr
 //route for progress update
 Route::middleware('auth')->post('/progress/update', [MateriProgressController::class, 'update'])
     ->name('progress.update');
+
+//route for attachments
+Route::post('/attachment/upload', [App\Http\Controllers\AttachmentController::class, 'upload'])->name('attachment.upload');
 
 
 
