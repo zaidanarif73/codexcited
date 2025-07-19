@@ -43,6 +43,8 @@ Route::group(["middleware" => ["teacher.access"], "namespace" => "App\Http\Contr
         Route::get("/", "MateriController@index")->name('index');
         Route::get("/create", "MateriController@create")->name('create');
         Route::post("/", "MateriController@store")->name('store');
+        Route::get("/{id}/edit", "MateriController@edit")->name('edit');
+        Route::put("/{id}", "MateriController@update")->name('update');
     });
 });
 

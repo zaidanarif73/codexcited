@@ -36,7 +36,7 @@
                                         <td>
                                             <div class="d-flex mb-1">
                                                 <a href="" class="btn btn-success btn-sm mr-1"><i class="fa fa-address-card"></i> Detail</a>
-                                                <a href="" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Edit</a>
+                                                <a href="{{ route('teacher.materi.edit',$row->id) }}" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Edit</a>
                                                 <a href="#" class="btn btn-danger btn-sm mr-1 btn-delete" data-id="{{$row->id}}"><i class="fa fa-trash"></i> Hapus</a>
                                             </div>
                                         </td>
@@ -57,7 +57,7 @@
     </div>
 </div>
 
-{{-- @include("teacher.pages.materi.modal.index") --}}
+@include("teacher.pages.materi.modal.index")
 
 <form id="frmDelete" method="POST">
     @csrf
