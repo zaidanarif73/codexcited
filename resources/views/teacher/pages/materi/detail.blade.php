@@ -1,6 +1,22 @@
 @extends('teacher.layouts.master')
-@section("title","Detail Materi")
-
+@section("title","Detail Materi - $materi->title")
+@section('css')
+<style>
+    .accordion-body img,
+    ul li img,
+    .trix-content img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0.5rem auto;
+    }
+    .accordion-body figcaption,
+    ul li figcaption,
+    .trix-content figcaption {
+        display: none !important;
+    }
+</style>
+@endsection
 @section('content')
 <div class="container">
     <h4>Judul Materi: {{ $materi->title }}</h4>

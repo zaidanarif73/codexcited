@@ -35,6 +35,15 @@
         background: #06BBCC;
         color: #f0f0f0;
     }
+    .accordion-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0.5rem auto;
+    }
+    .accordion-body figcaption {
+    display: none;
+    }
 
 </style>
 @endsection
