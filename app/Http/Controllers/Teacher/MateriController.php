@@ -191,4 +191,46 @@ class MateriController extends Controller
         }
     }
 
+    public function editDetail($materi_id, $detail_id)
+    {
+        $materi = Materi::findOrFail($materi_id);
+        $detail = MateriDetail::where('materi_id', $materi->id)->findOrFail($detail_id);
+
+        return view('teacher.pages.materi.detail-edit', compact('materi', 'detail'));
+    }
+
+    public function updateDetail(Request $request, $materi_id, $detail_id)
+    {
+        try {
+            $materi = Materi::findOrFail($materi_id);
+            $detail = MateriDetail::where('materi_id', $materi->id)->findOrFail($detail_id);
+
+            $detail->update([
+                'title' => $request->title,
+                'description' => $request->description,
+            ]);
+
+            alert()->success('Berhasil', 'Submateri berhasil diupdate');
+            return redirect()->route($this->route . 'show', $materi_id);
+
+        } catch (\Throwable $e) {
+            alert()->error('Gagal', $e->getMessage());
+            return redirect()->back()->withInput();
+        }
+    }
+
+    public function destroyDetail($materi_id, $detail_id)
+    {
+        try {
+            $detail = MateriDetail::where('materi_id', $materi_id)->findOrFail($detail_id);
+            $detail->delete();
+
+            alert()->success('Berhasil', 'Submateri berhasil dihapus');
+            return redirect()->route($this->route . 'show', $materi_id);
+        } catch (\Throwable $e) {
+            alert()->error('Gagal', $e->getMessage());
+            return redirect()->back();
+        }
+    }
+
 }

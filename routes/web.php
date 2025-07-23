@@ -48,6 +48,9 @@ Route::group(["middleware" => ["teacher.access"], "namespace" => "App\Http\Contr
         Route::delete("/{id}", "MateriController@destroy")->name('destroy');
         Route::get("/{id}/detail", "MateriController@show")->name('show');
         Route::post("/{id}/detail", "MateriController@storeDetail")->name('detail.store');
+        Route::get("/{materi}/detail/{detail}/edit", "MateriController@editDetail")->name('detail.edit');
+        Route::put("/{materi}/detail/{detail}", "MateriController@updateDetail")->name('detail.update');
+        Route::delete("/{materi}/detail/{detail}", "MateriController@destroyDetail")->name('detail.destroy');
         
     });
 });

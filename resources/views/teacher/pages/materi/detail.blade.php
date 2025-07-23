@@ -1,5 +1,5 @@
 @extends('teacher.layouts.master')
-@section("title","Detail Materi - $materi->title")
+@section("title","Detail Materi - $materi->title ~ CODEXCITED teacher")
 @section('css')
 <style>
     .accordion-body img,
@@ -15,6 +15,15 @@
     .trix-content figcaption {
         display: none !important;
     }
+    .border-4 {
+        border-width: 4px !important;
+    }
+    .btn-xs {
+        padding: 0.15rem 0.35rem;
+        font-size: 0.75rem;
+        line-height: 1;
+        border-radius: 0.2rem;
+    }
 </style>
 @endsection
 @section('content')
@@ -24,14 +33,31 @@
 
     <hr>
     <h5>Submateri Saat Ini:</h5>
-    <ul>
+    <ul class="list-unstyled">
         @forelse($materi->details as $detail)
-            <li>
-                <strong>{{ $detail->title }}</strong><br>
+            <li class="position-relative border border-4 rounded p-3 mb-3 shadow-sm bg-white">
+                {{-- Tombol di pojok kanan atas --}}
+                <div class="position-absolute" style="top: 0.5rem; right: 0.5rem; z-index: 1;">
+                    <a href="{{ route('teacher.materi.detail.edit', [$materi->id, $detail->id]) }}"
+                    class="btn btn-xs btn-sm btn-outline-primary mr-1" title="Edit">
+                        <i class="fas fa-pen"></i>
+                    </a>
+                    <form action="{{ route('teacher.materi.detail.destroy', [$materi->id, $detail->id]) }}"
+                        method="POST" class="d-inline" onsubmit="return confirm('Hapus submateri ini?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-xs btn-sm btn-outline-danger" title="Hapus">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </div>
+
+                {{-- Konten Submateri --}}
+                <strong class="d-block mb-2">{{ $detail->title }}</strong>
                 {!! $detail->description !!}
             </li>
         @empty
-            <li>Belum ada submateri.</li>
+            <li>Tidak ada submateri.</li>
         @endforelse
     </ul>
 
@@ -81,6 +107,8 @@
 
         wrapper.insertAdjacentHTML('beforeend', newBlock);
         counter++;
+
+        wrapper.lastElementChild.scrollIntoView({ behavior: "smooth" });
     });
 </script>
 
