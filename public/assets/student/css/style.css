@@ -85,6 +85,21 @@ body.dark-mode {
     background: #23283a !important;
     color: #f0f0f0 !important;
   }
+  
+  /* Dark mode for code blocks <pre> */
+  .dark-mode pre{
+    padding: 10px;
+    color: lime !important;
+    background: #181c25 !important;
+  } 
+
+  pre{
+    padding: 10px;
+    color: green !important;
+    background: #e3eafc !important;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
 
 #darkModeToggle {
     transition: background 0.3s, box-shadow 0.3s;
