@@ -7,7 +7,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('teacher.dashboard.index') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active" id="breadcumb">@yield('breadcumb')</li>
                 <li class="breadcrumb-item active" id="breadcumb_child">@yield('breadcumb_child')</li>
             </ol>

@@ -1,5 +1,8 @@
 @extends('teacher.layouts.master')
 @section("title","Detail Materi - $materi->title ~ CODEXCITED teacher")
+@section("title_breadcumb","Materi")
+@section("breadcumb","Materi")
+@section("breadcumb_child","Detail")
 @section('css')
 <style>
     .accordion-body img,

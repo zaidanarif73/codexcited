@@ -1,5 +1,8 @@
 @extends('teacher.layouts.master')
 @section('title', 'Edit Submateri - ' . $materi->title . ' ~ CODEXCITED teacher')
+@section("title_breadcumb","Materi")
+@section("breadcumb","Materi")
+@section("breadcumb_child","Detail")
 @section('content')
 <div class="container">
     <h4>Edit Submateri untuk Materi: <strong>{{ $materi->title }}</strong></h4>
