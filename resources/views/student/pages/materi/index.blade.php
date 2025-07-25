@@ -8,6 +8,9 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.06);
       transition: transform 0.15s, box-shadow 0.15s;
     }
+    .card-body {
+      flex-grow: 1;
+    }
     .course-card:hover {
       transform: translateY(-4px) scale(1.02);
       box-shadow: 0 8px 32px rgba(0,0,0,0.13);
@@ -17,6 +20,14 @@
       object-fit: cover;
       height: 180px;
       width: 100%;
+    }
+    @media (max-width: 576px) {
+      .course-image {
+        height: 120px;
+      }
+      .card-text{
+        font-size: 0.7rem;
+      }
     }
     .instructor-img {
       width: 36px;
@@ -44,7 +55,7 @@
 @endsection
 
 @section('content')
-<div class="container py-4">
+<div class="container py-4 px-2 px-md-4">
     <div class="mb-4 text-center">
       <h1 class="fw-bold mb-1">Daftar Materi</h1>
       <p class="text-muted mb-0">Temukan kursus yang sesuai untuk meningkatkan skill-mu!</p>
@@ -52,7 +63,7 @@
     <div class="row g-4">
       <!-- Course Card 1 -->
       @forelse ($table as $index => $row)
-      <div class="col-12 col-sm-6 col-md-4">
+      <div class="col-6 col-lg-3 px-2">
         <a href="{{ route('student.materi.show', ['id' => $row->id,'slug' => $row->slug]) }}">
           <div class="card course-card position-relative h-100">
             @if($row->type == 'html')
@@ -73,10 +84,6 @@
             <div class="card-body">
               <h5 class="card-title fw-bold">{{ $row->title }}</h5>
               <p class="card-text text-muted mb-2">{{ Str::limit($row->description, 200) }}</p>
-              <div class="d-flex align-items-center mb-2">
-                <img src="https://i.pravatar.cc/36?img=12" alt="Instructor" class="instructor-img">
-                <span class="small text-muted">by <b>Rina Putri</b></span>
-              </div>
               <div class="d-flex justify-content-between align-items-center">
                 @if($row->difficulty == 1)
                   <span class="badge bg-primary">Pemula</span>

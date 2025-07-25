@@ -99,6 +99,7 @@ body.dark-mode {
     background: #e3eafc !important;
     border-radius: 5px;
     overflow-x: auto;
+    font-size: 0.8rem;
   }
 
 #darkModeToggle {
