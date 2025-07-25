@@ -71,8 +71,8 @@
               <i class="bi bi-journal-bookmark text-info fs-3"></i>
             </div>
             <h6 class="fw-bold mb-1">Kelas yang diikuti</h6>
-            <div class="display-6 fw-bold mb-0">5</div>
-            <small class="text-muted">Active courses</small>
+            <div class="display-6 fw-bold mb-0">{{ $materiSelesai }}</div>
+            <small class="text-muted">Materi yang sudah dikerjakan</small>
           </div>
         </div>
         <div class="col-md-4">
@@ -81,9 +81,9 @@
               <i class="bi bi-bar-chart-line text-primary fs-3"></i>
             </div>
             <h6 class="fw-bold mb-1">Progress</h6>
-            <div class="display-6 fw-bold mb-0">72%</div>
+            <div class="display-6 fw-bold mb-0">{{ $progress }}%</div>
             <div class="progress my-2" style="height:8px;">
-              <div class="progress-bar bg-primary" style="width: 72%"></div>
+              <div class="progress-bar bg-primary" style="width: {{ $progress }}%"></div>
             </div>
             <small class="text-muted">Course completion</small>
           </div>

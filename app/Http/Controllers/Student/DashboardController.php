@@ -17,7 +17,6 @@ class DashboardController extends Controller
     }
 
     public function index(){
-        
         $user = Auth::user();
         $currentUserId = $user->id;
 
@@ -27,16 +26,50 @@ class DashboardController extends Controller
             ->orderBy('scores.score', 'desc')
             ->get();
 
-        // Calculate current user's rank
+        // Hitung jumlah materi yang sudah dikerjakan siswa 
+        $materiSelesai = DB::table('materis')
+            ->whereIn('id', function ($query) use ($currentUserId) {
+                $query->select('materi_details.materi_id')
+                    ->from('materi_details')
+                    ->leftJoin('materi_progress', function ($join) use ($currentUserId) {
+                        $join->on('materi_details.id', '=', 'materi_progress.materi_detail_id')
+                            ->where('materi_progress.user_id', '=', $currentUserId);
+                    })
+                    ->groupBy('materi_details.materi_id')
+                    ->havingRaw('COUNT(materi_details.id) = COUNT(materi_progress.id)');
+            })
+            ->count();
+
+        // Hitung ranking
         $rank = null;
         foreach ($score as $index => $entry) {
             if ($entry->user_id == $currentUserId) {
-                $rank = $index + 1; // index is 0-based, so add 1
+                $rank = $index + 1;
                 break;
             }
         }
 
-        return view($this->view . "index", ['rank' => $rank ?? 'Belum ada rank']);
+        //persentase
+        $progress = DB::table('materi_progress')
+            ->where('user_id', $currentUserId)
+            ->select(DB::raw('SUM(progress) as selesai_count, COUNT(*) as total_count'))
+            ->first();
+
+        $totalMateri = DB::table('materi_details')->count();
+        
+
+        if ($progress->total_count > 0) {
+            $progress = round(($progress->selesai_count / $totalMateri), 2);
+        } else {
+            $progress = 0; // Jika tidak ada materi, progress dianggap 0%
+        }
+
+
+        return view($this->view . "index", [
+            'rank' => $rank ?? 'Belum ada rank',
+            'materiSelesai' => $materiSelesai,
+            'progress' => $progress
+        ]);
     }
 }
 
