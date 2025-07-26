@@ -51,6 +51,14 @@
       max-height: 180px;
       object-fit: cover;
     }
+    .progress {
+      background-color: #e3eafc;
+      margin: 0;
+    }
+
+    .progress-bar {
+      transition: width 0.4s ease;
+    }
   </style>
 @endsection
 
@@ -96,6 +104,12 @@
                 @endif                  
                 <span class="text-primary fw-semibold"><i class="bi bi-clock me-1"></i>10 Jam</span>
               </div>
+            </div>
+            @php
+              $progress = $row->user_progress ?? 0;
+            @endphp
+            <div class="progress" style="height: 8px; border-radius: 0 0 1rem 1rem; overflow: hidden;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $progress }}%;" aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
         </a>

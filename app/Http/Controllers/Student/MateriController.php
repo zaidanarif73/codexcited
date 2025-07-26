@@ -16,16 +16,38 @@ class MateriController extends Controller
         $this->materi = new Materi();
     }
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
+        $userId = auth()->id(); // ambil ID user yang login
+        $table = $this->materi->with('details')->orderBy('difficulty', 'asc')->get();
 
-        $table = $this->materi;
-        $table = $table->orderBy('difficulty', 'asc')->get();
+        // Loop setiap materi untuk hitung progress-nya
+        foreach ($table as $materi) {
+            $submateriList = $materi->details; // ambil submateri
+            $submateriIds = $submateriList->pluck('id'); // ambil id-nya
+            $totalSubmateri = $submateriList->count();
 
-        $data =  [
-            'table' => $table,
-        ];
+            if ($totalSubmateri === 0) {
+                $materi->user_progress = 0;
+                continue;
+            }
 
-        return view($this->view. "index", $data);
+            // Ambil progres dari user untuk submateri yang relevan
+            $progressItems = MateriProgress::where('user_id', $userId)
+                ->whereIn('materi_detail_id', $submateriIds)
+                ->pluck('progress', 'materi_detail_id');
+
+            // Hitung total nilai progres
+            $totalProgress = 0;
+            foreach ($submateriIds as $id) {
+                $totalProgress += $progressItems[$id] ?? 0; // kalau tidak ada, anggap 0
+            }
+
+            // Hitung rata-rata progres materi
+            $materi->user_progress = round($totalProgress / $totalSubmateri);
+        }
+
+        return view($this->view . "index", ['table' => $table]);
     }
 
     public function show($id){

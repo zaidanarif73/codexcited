@@ -85,6 +85,9 @@ body.dark-mode {
     background: #23283a !important;
     color: #f0f0f0 !important;
   }
+  .dark-mode .progress {
+    background-color: #44436a !important;
+  }
   
   /* Dark mode for code blocks <pre> */
   .dark-mode pre{
