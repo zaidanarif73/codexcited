@@ -44,7 +44,21 @@
     .accordion-body figcaption {
         display: none;
     }
+      /* Dark mode for code blocks <pre> */
+    .dark-mode pre{
+        padding: 10px;
+        color: lime !important;
+        background: #181c25 !important;
+    } 
 
+    pre{
+        padding: 10px;
+        color: green !important;
+        background: #e3eafc !important;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-size: 0.8rem;
+    }
 </style>
 @endsection
 

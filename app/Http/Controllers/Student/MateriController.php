@@ -66,4 +66,9 @@ class MateriController extends Controller
         return view($this->view . "show", $data);
         // return view($this->view. "show");
     }
+
+    public function code()
+    {
+        return view($this->view . "code");
+    }
 }
