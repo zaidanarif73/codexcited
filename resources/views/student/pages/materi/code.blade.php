@@ -8,7 +8,9 @@
 <link href="{{URL::to('/')}}/assets/student/lib/codemirror/codemirror.css" rel="stylesheet">
 <link href="{{URL::to('/')}}/assets/student/lib/codemirror/theme/dracula.css" rel="stylesheet">
 <style>
-    
+    .CodeMirror {
+        font-size: 0.8rem;
+    }
 </style>
 @endsection 
 @section('content')
@@ -20,7 +22,7 @@
         <!-- Code Editor -->
         <div class="col-12 col-md-6 mb-3">
             <div class=" border rounded" style="overflow-x: auto;">
-                <textarea id="myTextarea" name="code" rows="10" cols="30" placeholder="Tulis kode Anda di sini..."></textarea>
+                <textarea id="myTextarea" name="code" rows="10" cols="30" placeholder="Tulis kode Anda di sini...">{{ $code }}</textarea>
             </div>
             <button class="btn btn-primary mt-3" onclick="runCode()">Run</button>
         </div>

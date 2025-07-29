@@ -67,8 +67,14 @@ class MateriController extends Controller
         // return view($this->view. "show");
     }
 
-    public function code()
+    public function code($id, Request $request)
     {
-        return view($this->view . "code");
+        $decodedCode = null;
+
+        if ($request->has('code')) {
+            $decodedCode = base64_decode($request->get('code'));
+        }
+
+        return view($this->view.'code' , ['code' => $decodedCode,]);
     }
 }

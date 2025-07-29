@@ -104,7 +104,8 @@
                 <div id="{{ $cid }}"
                     class="accordion-collapse collapse {{ $loop->first?'show':'' }}"
                     data-id="{{ $row->id }}">
-                <div class="accordion-body">{!! $row->description !!}</div>
+                    <div class="accordion-body">{!! $row->description !!}
+                    </div>
                 </div>
             </div>
             @endforeach
@@ -182,6 +183,39 @@ $(function () {
     /* 5. Panel pertama (jika show) */
     const $first = $('.accordion-collapse.show').first();
     if ($first.length) start($first.data('id'));
+});
+</script>
+
+<!-- Live Code Editor Button -->
+<script>
+$(function () {
+    $('.accordion-body').each(function () {
+        const $body = $(this);
+        const id = $body.closest('.accordion-collapse').data('id');
+
+        $body.find('pre').each(function (i) {
+            const $pre = $(this);
+            const uniqueKey = `${id}-${i}`; // ID MateriDetail + Index
+
+            $pre.attr('data-index', uniqueKey); // bisa juga pakai id="pre-4-0"
+
+            // Hindari duplikat tombol
+            if ($pre.next('.live-code-btn').length === 0) {
+                const encoded = btoa($pre.text()); // encode base64
+
+                const $btn = $(`
+                    <div class="text-start mt-2 live-code-btn my-3">
+                        <a href="${liveCodeRoute(id, encoded)}" class="btn btn-secondary btn-sm">Live Code Editor</a>
+                    </div>
+                `);
+                $pre.after($btn);
+            }
+        });
+    });
+
+    function liveCodeRoute(id, encodedCode) {
+        return "{{ route('student.materi.code', ':id') }}".replace(':id', id) + '?code=' + encodeURIComponent(encodedCode);
+    }
 });
 </script>
 @endsection
