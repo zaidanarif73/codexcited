@@ -29,8 +29,8 @@
 
         <!-- Output -->
         <div class="col-12 col-md-6">
-            <div class=" border rounded bg-light" style="max-height: 400px; overflow: auto;">
-                <iframe id="output" style="width:100%; height:391px; border:1px solid #ccc;" sandbox="allow-scripts"></iframe>
+            <div class="border rounded bg-light" style="overflow: hidden;">
+                <iframe id="output" style="width:100%; border:1px solid #ccc;" sandbox="allow-scripts"></iframe>
             </div>
         </div>
     </div>
@@ -53,14 +53,41 @@
         autoCloseBrackets: true,
     });
 
-    var width = window.innerWidth;
-    editor.setSize("auto", "400px"); // Set width to 70% of the viewport width and height to 500px
+    function adjustHeight() {
+        // Hitung tinggi maksimum berdasarkan viewport
+        const headerOffset = 230; // Sesuaikan dengan margin/padding atas halaman
+        const dynamicHeight = window.innerHeight - headerOffset;
+
+        // Set tinggi editor
+        editor.setSize("100%", dynamicHeight + "px");
+
+        // Set tinggi iframe
+        document.getElementById("output").style.height = dynamicHeight + "px";
+    }
+
+    // Jalankan saat awal
+    adjustHeight();
+
+    // Jalankan kembali saat resize
+    window.addEventListener("resize", adjustHeight);
 
     function runCode() {
         const code = editor.getValue();
         const iframe = document.getElementById("output");
         iframe.srcdoc = code;
+
+        // Scroll ke output setelah menjalankan kode
+        document.getElementById("output").scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
     }
 
+    // Tambahkan shortcut Ctrl+Enter untuk Run
+    editor.setOption("extraKeys", {
+        "Ctrl-Enter": function(cm) {
+            runCode();
+        }
+    });
 </script>
 @endsection
