@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Materi;
 use App\Models\MateriDetail;
 use App\Models\MateriProgress;
+use App\Models\Score;
 
 class MateriController extends Controller
 {
@@ -76,5 +77,24 @@ class MateriController extends Controller
         }
 
         return view($this->view.'code' , ['code' => $decodedCode,]);
+    }
+
+    public function addScore(Request $request)
+    {
+        $userId = auth()->id();
+
+        // Cek apakah user sudah punya data score
+        $score = \App\Models\Score::where('user_id', $userId)->first();
+
+        if ($score) {
+            $score->increment('score', $request->input('score', 1));
+        } else {
+            \App\Models\Score::create([
+                'user_id' => $userId,
+                'score' => $request->input('score', 1),
+            ]);
+        }
+
+        return response()->json(['message' => 'Score updated']);
     }
 }

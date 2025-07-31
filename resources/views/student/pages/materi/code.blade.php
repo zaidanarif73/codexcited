@@ -70,7 +70,8 @@
 
     // Jalankan kembali saat resize
     window.addEventListener("resize", adjustHeight);
-
+    
+    let lastSubmittedCode = "";
     function runCode() {
         const code = editor.getValue();
         const iframe = document.getElementById("output");
@@ -81,6 +82,14 @@
             behavior: 'smooth',
             block: 'start'
         });
+
+        // Tambahkan score hanya jika isi kode berbeda dari sebelumnya
+        if (code !== lastSubmittedCode) {
+            lastSubmittedCode = code;
+            addScore();
+        } else {
+            console.log("Kode tidak berubah, skor tidak ditambahkan.");
+        }
     }
 
     // Tambahkan shortcut Ctrl+Enter untuk Run
@@ -89,5 +98,25 @@
             runCode();
         }
     });
+
+    //function add point while running code
+    function addScore() {
+        const route = "{{ route('student.materi.score.addScore') }}";
+        $.ajax({
+            url: route,
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                score: 1 //tambahkan 1 poin setiap kali kode dijalankan
+            },
+            success: function(response) {
+                console.log("Score updated:", response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error adding score:", error);
+            }
+        });
+    }
+
 </script>
 @endsection

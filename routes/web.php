@@ -61,7 +61,7 @@ Route::group(["middleware" => ["student.access"], "namespace" => "App\Http\Contr
 
     Route::group(["as" => "materi.", "prefix" => "materi"], function () {
         Route::get("/", "MateriController@index")->name('index');
-        
+        Route::post("/score/add", "MateriController@addScore")->name('score.addScore');
 
         Route::get('/code/{id}', 'MateriController@code')->name('code');
 
