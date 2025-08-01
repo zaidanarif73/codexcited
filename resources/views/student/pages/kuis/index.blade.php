@@ -1,6 +1,6 @@
 @extends('student.layouts.master')
-@section('navbar') {{-- kosongkan navbar --}}
-@endsection
+
+@section('navbar') {{-- kosongkan navbar --}} @endsection
 
 @section('css')
 <link href="{{URL::to('/')}}/assets/student/quizller/css/main.css" rel="stylesheet">
@@ -73,7 +73,9 @@
         border-radius: 10px;
         background-color: #ffffff;
         color: #00bcd4;
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 10px;
         width: 100%;
         box-sizing: border-box;
         margin-bottom: 10px;
@@ -88,15 +90,20 @@
     }
 
     .quiz input[type="radio"] {
-        margin-right: 10px;
+        display: none;
     }
 
-    @media (max-width: 768px) {
-        .quiz label {
-            padding-left: 15px;
-            padding-right: 15px;
-            font-size: 14px;
-        }
+    .option-letter {
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        border-radius: 50%;
+        text-align: center;
+        font-weight: bold;
+        background-color: #e0f7fa;
+        color: #00bcd4;
+        flex-shrink: 0;
     }
 
     .score-box {
@@ -114,13 +121,13 @@
     }
 
     .correct-answer {
-        background-color: #c8e6c9 !important; /* hijau muda */
+        background-color: #c8e6c9 !important;
         border-color: #2e7d32 !important;
         color: #2e7d32 !important;
     }
 
     .wrong-answer {
-        background-color: #ffcdd2 !important; /* merah muda */
+        background-color: #ffcdd2 !important;
         border-color: #c62828 !important;
         color: #c62828 !important;
     }
@@ -128,6 +135,7 @@
     #explanation-box {
         animation: fadeIn 0.5s ease;
     }
+
     @keyframes fadeIn {
         from {opacity: 0;}
         to {opacity: 1;}
@@ -156,28 +164,16 @@
                 </div>
 
                 <div class="modal-body p-0">
-                    <div class="quiz" id="quiz">
-                        <label onclick="getSelectedItem('a')">
-                            <input type="radio" name="q_answer" value="1"> Tokyo
-                        </label>
-                        <label onclick="getSelectedItem('b')">
-                            <input type="radio" name="q_answer" value="2"> Osaka
-                        </label>
-                        <label onclick="getSelectedItem('c')">
-                            <input type="radio" name="q_answer" value="3"> Kyoto
-                        </label>
-                        <label onclick="getSelectedItem('d')">
-                            <input type="radio" name="q_answer" value="4"> Hiroshima
-                        </label>
-                    </div>
+                    <div class="quiz" id="quiz"></div>
+
                     <div id="explanation-box" style="display:none; margin-top: 10px; padding: 15px; background-color: #f1f1f1; border-left: 5px solid #00bcd4; border-radius: 8px;">
                         <div class="text-muted fw-bold"><small>Penjelasan:</small></div>
                         <p id="explanation-text" style="margin: 0;"></p>
                     </div>
-                </div> {{-- end modal-body --}}
-            </div> {{-- end content --}}
+                </div>
+            </div>
 
-        </div> {{-- end quiz-wrapper --}}
+        </div>
     </div>
 </section>
 @endsection
@@ -185,7 +181,7 @@
 @section('script')
 <script>
     const questions = @json($questions);
-
+    
     let currentIndex = 0;
     let score = 0;
     let answered = Array(questions.length).fill(false);
@@ -197,10 +193,13 @@
 
         const quizContainer = document.getElementById("quiz");
         quizContainer.innerHTML = "";
+        const letters = ['A', 'B', 'C', 'D'];
+
         q.options.forEach((opt, i) => {
             quizContainer.innerHTML += `
                 <label onclick="selectOption(${i})">
-                    <input type="radio" name="q_answer" value="${i}"> ${opt}
+                    <input type="radio" name="q_answer" value="${i}">
+                    <span class="option-letter">${letters[i]}</span> ${opt}
                 </label>`;
         });
     }
@@ -214,27 +213,20 @@
 
             allLabels.forEach((label, i) => {
                 label.classList.remove('correct-answer', 'wrong-answer');
-                if (i === correctIndex) {
-                    label.classList.add('correct-answer');
-                }
-                if (i === selected && i !== correctIndex) {
-                    label.classList.add('wrong-answer');
-                }
+                if (i === correctIndex) label.classList.add('correct-answer');
+                if (i === selected && i !== correctIndex) label.classList.add('wrong-answer');
             });
 
-            // Skor
             if (selected === correctIndex) {
                 score += 10;
                 document.getElementById("score").innerText = score;
             }
 
-            // Tampilkan penjelasan
             const explanationBox = document.getElementById("explanation-box");
             const explanationText = document.getElementById("explanation-text");
             explanationText.innerText = questions[currentIndex].explanation;
             explanationBox.style.display = 'block';
 
-            // Delay sebelum lanjut soal berikutnya
             setTimeout(() => {
                 explanationBox.style.display = 'none';
                 if (currentIndex < questions.length - 1) {
@@ -243,7 +235,7 @@
                 } else {
                     showResult();
                 }
-            }, 2500); // tampilkan penjelasan 2.5 detik
+            }, 2500);
         }
     }
 
@@ -269,7 +261,6 @@
         document.getElementById('content').style.display = 'block';
     }
 
-    // Jalankan saat halaman siap
     showLoader();
     setTimeout(() => {
         hideLoader();
