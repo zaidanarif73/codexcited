@@ -171,7 +171,7 @@
                         </label>
                     </div>
                     <div id="explanation-box" style="display:none; margin-top: 10px; padding: 15px; background-color: #f1f1f1; border-left: 5px solid #00bcd4; border-radius: 8px;">
-                        <strong>Penjelasan:</strong>
+                        <div class="text-muted fw-bold"><small>Penjelasan:</small></div>
                         <p id="explanation-text" style="margin: 0;"></p>
                     </div>
                 </div> {{-- end modal-body --}}
@@ -184,26 +184,7 @@
 
 @section('script')
 <script>
-    const questions = [
-        {
-            question: "Apa ibu kota negara Jepang?",
-            options: ["Tokyo", "Osaka", "Kyoto", "Hiroshima"],
-            correct: 0,
-            explanation: "Tokyo adalah ibu kota Jepang sejak 1869 dan merupakan pusat pemerintahan dan ekonomi."
-        },
-        {
-            question: "Siapa penemu bola lampu?",
-            options: ["Einstein", "Newton", "Edison", "Tesla"],
-            correct: 2,
-            explanation: "Thomas Edison dikenal sebagai penemu bola lampu yang bisa bertahan lama, walau banyak ilmuwan lain juga berkontribusi."
-        },
-        {
-            question: "Apa hasil dari 2 + 2?",
-            options: ["2", "3", "4", "5"],
-            correct: 2,
-            explanation: "2 + 2 = 4 adalah dasar dari operasi penjumlahan dalam matematika dasar."
-        }
-    ];
+    const questions = @json($questions);
 
     let currentIndex = 0;
     let score = 0;
@@ -272,7 +253,7 @@
             <div class="text-center">
                 <h3 class="mb-3">Kuis Selesai!</h3>
                 <p>Skor Akhir Kamu:</p>
-                <h1 style="font-size: 48px">${score}</h1>
+                <div class="text-danger display-6 fw-bold mb-0">${score}</div>
                 <a href="{{ route('student.dashboard.index') }}" class="btn btn-primary mt-4">Kembali ke Dashboard</a>
             </div>
         `;
