@@ -10,7 +10,9 @@
     {{-- @include("student.components.spinner") --}}
 
     <!-- navbar -->
-    @include("student.layouts.navbar")
+    @section('navbar')
+        @include("student.layouts.navbar")
+    @show
 
     <!-- main -->
     <main class="main">

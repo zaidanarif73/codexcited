@@ -81,6 +81,14 @@ Route::group(["middleware" => ["student.access"], "namespace" => "App\Http\Contr
         Route::put("/", "ProfileController@update")->name('update');
     });
 
+    //kuis
+    Route::group(["as" => "kuis.", "prefix" => "kuis"], function () {
+        Route::get("/", "KuisController@index")->name('index');
+        Route::get("/{id}/start", "KuisController@start")->name('start');
+        Route::post("/{id}/submit", "KuisController@submit")->name('submit');
+        Route::get("/{id}/result", "KuisController@result")->name('result');
+    });
+
 
 });
 
