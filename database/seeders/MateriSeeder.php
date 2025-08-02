@@ -21,5 +21,14 @@ class MateriSeeder extends Seeder
             'type' => 'html',
             'difficulty' => 1, // 1 = Mudah, 2 = Sedang, 3 = Sulit
         ]);
+
+        $robot = 'heheh';
+        Materi::create([
+            'title' => $robot,
+            'slug' => \Illuminate\Support\Str::slug($robot),
+            'description' => 'hehehe',
+            'type' => 'html',
+            'difficulty' => 1, // 1 = Mudah, 2 = Sedang, 3 = Sulit
+        ]);
     }
 }

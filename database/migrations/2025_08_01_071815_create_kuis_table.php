@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('kuis', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('materi_id'); // foreign key ke tabel materi
+            $table->text('question');
+            $table->json('options');       // Menyimpan array pilihan dalam bentuk JSON
+            $table->integer('correct');    // Indeks pilihan yang benar
+            $table->text('explanation');   // Penjelasan jawaban
             $table->timestamps();
+
+            // Relasi ke tabel materi
+            $table->foreign('materi_id')->references('id')->on('materis')->onDelete('cascade');
         });
     }
 

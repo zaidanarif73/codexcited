@@ -8,6 +8,7 @@ use App\Models\Materi;
 use App\Models\MateriDetail;
 use App\Models\MateriProgress;
 use App\Models\Score;
+use App\Models\Kuis;
 
 class MateriController extends Controller
 {
@@ -51,21 +52,24 @@ class MateriController extends Controller
         return view($this->view . "index", ['table' => $table]);
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $materi = $this->materi->findOrFail($id);
         $materiDetails = MateriDetail::where('materi_id', $materi->id)->get();
         $progressMap = MateriProgress::where('user_id', auth()->id())
             ->whereIn('materi_detail_id', $materiDetails->pluck('id'))
             ->pluck('progress', 'materi_detail_id');
 
+        $kuis = Kuis::where('materi_id', $materi->id)->get(); // <<--- ini ditambahkan
+
         $data = [
             'materi' => $materi,
             'materiDetails' => $materiDetails,
             'progressMap' => $progressMap,
+            'kuis' => $kuis, // <<--- lempar ke view
         ];
 
         return view($this->view . "show", $data);
-        // return view($this->view. "show");
     }
 
     public function code($id, Request $request)

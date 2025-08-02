@@ -158,19 +158,27 @@
 
             <!-- Quiz Content -->
             <div id="content">
-                <div class="question-header mb-3">
-                    <span id="qid">1</span>
-                    <h5 id="question">Apa ibu kota negara Jepang?</h5>
-                </div>
-
-                <div class="modal-body p-0">
-                    <div class="quiz" id="quiz"></div>
-
-                    <div id="explanation-box" style="display:none; margin-top: 10px; padding: 15px; background-color: #f1f1f1; border-left: 5px solid #00bcd4; border-radius: 8px;">
-                        <div class="text-muted fw-bold"><small>Penjelasan:</small></div>
-                        <p id="explanation-text" style="margin: 0;"></p>
+                @if ($questions->isEmpty())
+                    <div class="text-center">
+                        <h3 class="mb-3">Kuis Tidak Tersedia</h3>
+                        <p>Maaf, saat ini tidak ada kuis yang tersedia untuk materi ini.</p>
+                        <a href="{{ route('student.materi.index') }}" class="btn btn-primary mt-4">Kembali ke Dashboard</a>
                     </div>
-                </div>
+                @else
+                    <div class="question-header mb-3">
+                        <span id="qid"></span>
+                        <h5 id="question"></h5>
+                    </div>
+
+                    <div class="modal-body p-0">
+                        <div class="quiz" id="quiz"></div>
+
+                        <div id="explanation-box" style="display:none; margin-top: 10px; padding: 15px; background-color: #f1f1f1; border-left: 5px solid #00bcd4; border-radius: 8px;">
+                            <div class="text-muted fw-bold"><small>Penjelasan:</small></div>
+                            <p id="explanation-text" style="margin: 0;"></p>
+                        </div>
+                    </div>
+                @endif
             </div>
 
         </div>
@@ -246,7 +254,7 @@
                 <h3 class="mb-3">Kuis Selesai!</h3>
                 <p>Skor Akhir Kamu:</p>
                 <div class="text-danger display-6 fw-bold mb-0">${score}</div>
-                <a href="{{ route('student.dashboard.index') }}" class="btn btn-primary mt-4">Kembali ke Dashboard</a>
+                <a href="{{ route('student.materi.index') }}" class="btn btn-primary mt-4">Kembali ke Dashboard</a>
             </div>
         `;
     }

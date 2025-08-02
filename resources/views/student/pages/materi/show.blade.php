@@ -110,6 +110,29 @@
             </div>
             @endforeach
 
+            <!--kuis-->
+            @if($kuis->count() > 0)
+                <div class="accordion-item my-2">
+                    <h2 class="accordion-header" id="headingKuis">
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseKuis"
+                                aria-expanded="false">
+                            {{ $materiDetails->count() + 1 }}. Kuis
+                        </button>
+                    </h2>
+                    <div id="collapseKuis" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <p>Ada {{ $kuis->count() }} soal dalam kuis ini. Selamat Mengerjakan!</p>
+                            <a href="{{ route('student.kuis.show', $materi->id) }}" class="btn btn-success">
+                                Mulai Kuis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
         </div>
     </div>
 </div>
