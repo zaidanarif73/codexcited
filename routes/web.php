@@ -51,6 +51,14 @@ Route::group(["middleware" => ["teacher.access"], "namespace" => "App\Http\Contr
         Route::get("/{materi}/detail/{detail}/edit", "MateriController@editDetail")->name('detail.edit');
         Route::put("/{materi}/detail/{detail}", "MateriController@updateDetail")->name('detail.update');
         Route::delete("/{materi}/detail/{detail}", "MateriController@destroyDetail")->name('detail.destroy');
+
+        // Rute kuis untuk setiap materi
+        Route::get("/{materi}/kuis", "KuisController@index")->name('kuis.index');
+        Route::get("/{materi}/kuis/create", "KuisController@create")->name('kuis.create');
+        Route::post("/{materi}/kuis", "KuisController@store")->name('kuis.store');
+        Route::get("/{materi}/kuis/{kuis}/edit", "KuisController@edit")->name('kuis.edit');
+        Route::put("/{materi}/kuis/{kuis}", "KuisController@update")->name('kuis.update');
+        Route::delete("/{materi}/kuis/{kuis}", "KuisController@destroy")->name('kuis.destroy');
         
     });
 });

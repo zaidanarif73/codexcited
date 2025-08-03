@@ -23,4 +23,9 @@ class Materi extends Model
     {
         return $this->hasMany(MateriDetail::class);
     }
+
+    public function kuis()
+    {
+        return $this->hasMany(Kuis::class);
+    }
 }

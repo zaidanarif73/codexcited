@@ -76,7 +76,10 @@
             </div>
         </div>
 
-        <button type="button" class="btn btn-sm btn-secondary mb-3" id="add-submateri">+ Tambah Submateri</button>
+        <div class="mb-3 d-flex gap-2">
+            <button type="button" class="btn btn-sm btn-secondary" id="add-submateri">+ Tambah Submateri</button>
+            <a href="{{ route('teacher.materi.kuis.index', $materi->id) }}" class="btn btn-sm btn-warning">+ Tambah Kuis</a>
+        </div>
         <br>
         <button type="submit" class="btn btn-primary">Simpan Submateri</button>
     </form>
