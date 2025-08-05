@@ -257,6 +257,25 @@
                 <a href="{{ route('student.materi.index') }}" class="btn btn-primary mt-4">Kembali ke Dashboard</a>
             </div>
         `;
+        addScore(); // Tambahkan skor ke database
+    }
+
+    function addScore() {
+        const route = "{{ route('student.kuis.simpanSkor') }}";
+        $.ajax({
+            url: route,
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                score: score //tambahkan skore ke database
+            },
+            success: function(response) {
+                console.log("Score updated:", response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error adding score:", error);
+            }
+        });
     }
 
     function showLoader() {

@@ -92,6 +92,7 @@ Route::group(["middleware" => ["student.access"], "namespace" => "App\Http\Contr
     //kuis
     Route::group(["as" => "kuis.", "prefix" => "kuis"], function () {
         Route::get("/{materi_id}", "KuisController@show")->name('show');
+        Route::post("/simpan-skor", "KuisController@simpanSkor")->name('simpanSkor');
     });
 
 

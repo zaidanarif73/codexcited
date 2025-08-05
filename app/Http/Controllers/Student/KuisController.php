@@ -20,4 +20,23 @@ class KuisController extends Controller
 
         return view($this->view . "show", compact('questions', 'materi_id'));
     }
+
+    public function simpanSkor(Request $request)
+    {
+        $userId = auth()->id();
+
+        // Cek apakah user sudah punya data score
+        $score = \App\Models\Score::where('user_id', $userId)->first();
+
+        if ($score) {
+            $score->increment('score', $request->input('score', 1));
+        } else {
+            \App\Models\Score::create([
+                'user_id' => $userId,
+                'score' => $request->input('score', 1),
+            ]);
+        }
+
+        return response()->json(['message' => 'Score updated']);
+    }
 }
