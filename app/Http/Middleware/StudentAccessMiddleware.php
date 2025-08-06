@@ -18,7 +18,7 @@ class StudentAccessMiddleware
     {
         $user = Auth::user(); 
         if (empty($user) || !$user->hasRole([RoleEnum::Student])) {
-            alert()->html('Gagal',"Anda tidak diperbolehkan mengakses halaman ini",'error');
+            alert()->html('Gagal',"Harap Login Dahulu!",'error');
             
             if($user){
                 Auth::logout();

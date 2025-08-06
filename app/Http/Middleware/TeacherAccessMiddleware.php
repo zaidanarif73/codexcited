@@ -18,7 +18,7 @@ class TeacherAccessMiddleware
     {
         $user = Auth::user(); 
         if (empty($user) || !$user->hasRole([RoleEnum::Teacher])) {
-            alert()->html('Gagal',"Anda sedang login sebagai teacher!",'error');
+            alert()->html('Gagal',"Anda tidak diperbolehkan mengakses halaman ini!",'error');
             
             if($user){
                 Auth::logout();

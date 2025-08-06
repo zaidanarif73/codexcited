@@ -26,4 +26,6 @@
 
     <!-- Template Stylesheet -->
     <link href="{{URL::to('/')}}/assets/guest/css/style.css" rel="stylesheet">
+
+    @yield('css')
 </head>

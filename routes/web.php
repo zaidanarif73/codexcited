@@ -31,8 +31,10 @@ Route::group(["namespace" => "App\Http\Controllers\Auth", "as" => "auth.", "pref
 });
 
 //GUEST ROUTES
-Route::group(["namespace" => "App\Http\Controllers\Guest", "as" => "guest."], function () {
+Route::group(["namespace" => "App\Http\Controllers\Guest", "as" => "guest." ], function () {
     Route::get("/", "HomeController@index");
+
+    Route::get("/materi", "MateriController@index")->name('materi.index');
 });
 
 //TEACHER ROUTES

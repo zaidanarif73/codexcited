@@ -8,3 +8,5 @@
 
 <!-- Template Javascript -->
 <script src="{{URL::to('/')}}/assets/guest/js/main.js"></script>
+
+@yield('script')
