@@ -4,9 +4,9 @@
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-3">Quick Link</h4>
-                <a class="btn btn-link" href="">Beranda</a>
-                <a class="btn btn-link" href="">Tentang</a>
-                <a class="btn btn-link" href="">Materi</a>
+                <a class="btn btn-link" href="{{ route('guest.') }}">Beranda</a>
+                <a class="btn btn-link" href="{{ route('guest.tentang.index') }}">Tentang</a>
+                <a class="btn btn-link" href="{{ route('guest.materi.index') }}">Materi</a>
                 <a class="btn btn-link" href="">Leaderboard</a>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-3">Codexcited</h4>
+                <h4 class="text-white mb-3">CODEXCITED</h4>
                 <p> platform belajar pemrograman online yang interaktif, praktis, dan mudah dipahami</p>
             </div>
         </div>

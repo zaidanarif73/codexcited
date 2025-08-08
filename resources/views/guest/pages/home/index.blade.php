@@ -11,7 +11,7 @@
                             <div class="col-sm-10 col-lg-8">
                                 <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Kursus Bahasa Pemrograman Online</h5>
                                 <h1 class="display-3 text-white animated slideInDown">Belajar Koding, Kuasai Masa Depan!</h1>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
+                                <a href="{{ route('guest.tentang.index') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
                                 <a href="{{ route('auth.login.index') }}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                             <div class="col-sm-10 col-lg-8">
                                 <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Best Online Courses</h5>
                                 <h1 class="display-3 text-white animated slideInDown">Dari Pemula Menjadi Pengembang, Mulai dengan Kode!</h1>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
+                                <a href="{{ route('guest.tentang.index') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
                                 <a href="{{ route('auth.login.index') }}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Kuis dan Latihan</p>
                         </div>
                     </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="{{ route('guest.tentang.index') }}">Read More</a>
                 </div>
             </div>
         </div>

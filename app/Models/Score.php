@@ -10,4 +10,10 @@ class Score extends Model
     use HasFactory;
 
     protected $fillable = ['user_id', 'score'];
+
+     // Relasi ke model User
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

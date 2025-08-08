@@ -35,6 +35,10 @@ Route::group(["namespace" => "App\Http\Controllers\Guest", "as" => "guest." ], f
     Route::get("/", "HomeController@index");
 
     Route::get("/materi", "MateriController@index")->name('materi.index');
+
+    Route::get("/tentang", "TentangController@index")->name('tentang.index');
+    
+    Route::get("/leaderboard", "LeaderboardController@index")->name('leaderboard.index');
 });
 
 //TEACHER ROUTES
