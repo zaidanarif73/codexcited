@@ -23,18 +23,12 @@
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="" class="nav-link @if(request()->routeIs('dashboard.dashboard.index')) active @endif">
+                <a href="{{ route('teacher.dashboard.index') }}" class="nav-link @if(request()->routeIs('dashboard.dashboard.index')) active @endif">
                 <i class='bx bx-tachometer col-3 bx-tada-hover' ></i>
                 <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="" class="nav-link">
-                <i class='bx bxl-chrome col-3 bx-tada-hover' ></i>
-                <p>Buka Landingpage </p>
-                </a>
-            </li>
-
+            
             <li class="nav-header">MENU ADMIN</li>
 
                 @if(Auth::user()->hasRole([

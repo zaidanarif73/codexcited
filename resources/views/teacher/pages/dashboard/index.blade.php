@@ -32,14 +32,14 @@
     ]))
     <div class="small-box bg-info">
         <div class="inner">
-        <h3>333</h3>
+        <h3>{{ $materiCount }}</h3>
 
         <p>Materi</p>
         </div>
         <div class="icon">
             <i class='bx bx-file'></i>
         </div>
-        <a href="" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="{{ route('teacher.materi.index') }}" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
     <!-- ./col -->
@@ -47,9 +47,8 @@
     <!-- small box -->
     <div class="small-box bg-success">
         <div class="inner">
-            <h3>324</h3>
-
-        <p>Siswa</p>
+            <h3>{{ $studentCount }}</h3>
+            <p>Siswa</p>
         </div>
         <div class="icon">
             <i class='bx bxs-news' ></i>

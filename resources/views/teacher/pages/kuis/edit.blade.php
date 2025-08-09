@@ -1,5 +1,8 @@
 @extends('teacher.layouts.master')
 @section("title", "Edit Kuis")
+@section("title_breadcumb", "Materi")
+@section("breadcumb", "Materi")
+@section("breadcumb_child", "Edit Kuis")
 
 @section('content')
 <div class="container mt-4">
