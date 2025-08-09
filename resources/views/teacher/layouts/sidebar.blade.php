@@ -84,10 +84,10 @@
                 </a>
                 </li>
                 <li class="nav-item">
-                <a href="/dashboard/user-activity" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.log')) active @endif">
+                <a href="{{ route('teacher.log.index') }}" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.log')) active @endif">
                     <i class="bx bx-history col-3 bx-tada-hover"></i>
                     <p>
-                    Log
+                    Aktivitas Siswa 
                     </p>
                 </a>
                 </li>

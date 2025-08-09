@@ -61,9 +61,8 @@
     <!-- small box -->
     <div class="small-box bg-warning">
         <div class="inner">
-        <h3>1234</h3>
-
-        <p>Interaksi Siswa</p>
+        <h3>{{ $activityCount }}</h3>
+        <p>Aktivitas Siswa</p>
         </div>
         <div class="icon">
             <i class='bx bx-door-open'></i>

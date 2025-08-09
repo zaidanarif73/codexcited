@@ -68,10 +68,22 @@ class LoginController extends Controller
                         return redirect()->intended(route('teacher.dashboard.index'));
                     }
 
-                    if(Auth::user()->hasRole([
+                    if (Auth::user()->hasRole([
                         RoleEnum::Student,
-                    ])){
-                        alert()->html('Berhasil','Login berhasil','success'); 
+                    ])) {
+                        // Ambil nama user untuk dicatat
+                        $userName = Auth::user()->name ?? 'Unknown';
+
+                        // Logging activity
+                        logActivity(
+                            'login', // event
+                            Auth::id(), // id user
+                            "Melakukan login akun" // deskripsi
+                        );
+
+                        // SweetAlert
+                        alert()->html('Berhasil', 'Login berhasil', 'success');
+
                         return redirect()->intended(route('student.dashboard.index'));
                     }
             }

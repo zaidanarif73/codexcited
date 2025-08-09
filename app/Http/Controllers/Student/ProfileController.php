@@ -68,6 +68,13 @@ class ProfileController extends Controller
                 'avatar' => $avatar,
             ]);
 
+            //Log aktivitas setelah update profil
+            logActivity(
+                'update_profile',
+                $result->id,
+                'Memperbarui profil'
+            );
+
             alert()->html('Berhasil','Data berhasil diubah','success'); 
             return redirect()->route($this->route."index");
 

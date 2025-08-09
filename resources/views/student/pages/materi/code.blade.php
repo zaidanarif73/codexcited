@@ -107,7 +107,8 @@
             type: 'POST',
             data: {
                 _token: '{{ csrf_token() }}',
-                score: 1 //tambahkan 1 poin setiap kali kode dijalankan
+                score: 1, //tambahkan 1 poin setiap kali kode dijalankan
+                materi_id: "{{ $materi_id }}",
             },
             success: function(response) {
                 console.log("Score updated:", response);

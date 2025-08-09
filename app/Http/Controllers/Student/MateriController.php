@@ -49,6 +49,9 @@ class MateriController extends Controller
             $materi->user_progress = round($totalProgress / $totalSubmateri);
         }
 
+        // Log aktivitas buka daftar materi
+        logActivity('open_materi_list', null, 'Membuka daftar materi');
+
         return view($this->view . "index", ['table' => $table]);
     }
 
@@ -61,6 +64,9 @@ class MateriController extends Controller
             ->pluck('progress', 'materi_detail_id');
 
         $kuis = Kuis::where('materi_id', $materi->id)->get(); // <<--- ini ditambahkan
+
+        // Log aktivitas buka materi
+        logActivity('open_materi', $materi->id, 'Membuka materi: ' . $materi->title);
 
         $data = [
             'materi' => $materi,
@@ -80,12 +86,18 @@ class MateriController extends Controller
             $decodedCode = base64_decode($request->get('code'));
         }
 
-        return view($this->view.'code' , ['code' => $decodedCode,]);
+        // Log aktivitas buka code editor
+        $materiTitle = Materi::where('id', $id)->value('title');
+        logActivity('open_code_editor', $id, 'Membuka code editor untuk materi: ' . $materiTitle);
+
+        return view($this->view.'code' , ['code' => $decodedCode, 'materi_id' => $id]);
     }
 
     public function addScore(Request $request)
     {
         $userId = auth()->id();
+
+
 
         // Cek apakah user sudah punya data score
         $score = \App\Models\Score::where('user_id', $userId)->first();
@@ -98,6 +110,10 @@ class MateriController extends Controller
                 'score' => $request->input('score', 1),
             ]);
         }
+
+        // Log aktivitas run code
+        $materiTitle = Materi::where('id', $request->input('materi_id'))->value('title');
+        logActivity('run_code_editor', $request->input('materi_id'), 'Melakukan run code editor pada materi ' . $materiTitle);
 
         return response()->json(['message' => 'Score updated']);
     }

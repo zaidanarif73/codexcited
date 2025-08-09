@@ -67,6 +67,11 @@ Route::group(["middleware" => ["teacher.access"], "namespace" => "App\Http\Contr
         Route::delete("/{materi}/kuis/{kuis}", "KuisController@destroy")->name('kuis.destroy');
         
     });
+
+    //user activity log
+    Route::group(["as" => "log.", "prefix" => "log"], function () {
+        Route::get("/", "StudentActivityController@index")->name('index');
+    });
 });
 
 //STUDENT ROUTES

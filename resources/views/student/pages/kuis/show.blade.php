@@ -267,7 +267,8 @@
             type: 'POST',
             data: {
                 _token: '{{ csrf_token() }}',
-                score: score //tambahkan skore ke database
+                score: score, //tambahkan skore ke database
+                materi_id: "{{ $materi_id }}",
             },
             success: function(response) {
                 console.log("Score updated:", response);
