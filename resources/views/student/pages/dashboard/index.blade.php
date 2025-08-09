@@ -104,9 +104,17 @@
       <div class="card p-4 shadow-sm border-0">
         <h5 class="fw-bold mb-3"><i class="bi bi-clock-history me-2"></i>Recent Activity</h5>
         <ul class="mb-0 ps-3">
-          <li>Completed <strong>JavaScript Basics</strong> quiz</li>
-          <li>Submitted assignment for <strong>Web Design 101</strong></li>
-          <li>Joined new course: <strong>Advanced CSS</strong></li>
+          @if($recentActivities->isEmpty())
+            <li class="text-muted">Tidak ada aktivitas terbaru</li>
+          @else
+            @foreach($recentActivities as $activity)
+              <li class="mb-2">
+                <span class="text-primary">{{ $activity->created_at->diffForHumans() }}</span> - 
+                <strong>{{ $activity->description }}</strong>
+                <em>{{ $activity->subject }}</em>
+              </li>
+            @endforeach
+          @endif
         </ul>
       </div>
   </div>

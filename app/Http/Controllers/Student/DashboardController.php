@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Score;
+use App\Models\StudentActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,7 @@ class DashboardController extends Controller
     {
         $this->view = "student.pages.dashboard.";
         $this->score = new Score();
+        $this->activity = new StudentActivity();
     }
 
     public function index(){
@@ -64,11 +66,19 @@ class DashboardController extends Controller
             $progress = 0; // Jika tidak ada materi, progress dianggap 0%
         }
 
+        // Ambil 3 aktivitas terakhir user kecuali activity_type bernilai 'login', 'open_materi_list', 'open_quiz'
+        $recentActivities = $this->activity
+            ->where('user_id', $currentUserId)
+            ->whereNotIn('activity_type', ['login', 'open_materi_list', 'open_quiz', 'open_code_editor'])
+            ->orderBy('created_at', 'desc')
+            ->take(3)
+            ->get();
 
         return view($this->view . "index", [
             'rank' => $rank ?? 'Belum ada rank',
             'materiSelesai' => $materiSelesai,
-            'progress' => $progress
+            'progress' => $progress,
+            'recentActivities' => $recentActivities,
         ]);
     }
 }

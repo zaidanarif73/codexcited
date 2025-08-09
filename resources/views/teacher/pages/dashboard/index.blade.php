@@ -67,7 +67,7 @@
         <div class="icon">
             <i class='bx bx-door-open'></i>
         </div>
-        <a href="" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="{{ route('teacher.log.index') }}" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
     <!-- ./col -->
