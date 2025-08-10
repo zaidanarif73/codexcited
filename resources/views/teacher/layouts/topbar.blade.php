@@ -35,11 +35,11 @@
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" href="#" role="button">
                 <i class="fas fa fa-moon-o"></i>
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link" href="{{ route('auth.logout') }}" role="button">
                 <i class="fa fa-sign-out-alt"></i>

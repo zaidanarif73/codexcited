@@ -1,19 +1,16 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #23283a;">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link d-flex align-items-center justify-content-center">
-        <img src="{{URL::to('/')}}/assets/img/favicon.png" alt="CODEXCITED" class="brand-image">
-    </a>
+    
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-            <img src="@if(!empty(Auth::user()->avatar)) {{asset('storage/'.Auth::user()->avatar)}} @else https://avatars.dicebear.com/api/initials/{{ Auth::user()->name  ?? null}}.svg?margin=10 @endif" class="img-circle elevation-2" alt="User Image">
+                <img src="@if(!empty(Auth::user()->avatar)) {{asset('storage/'.Auth::user()->avatar)}} @else https://avatars.dicebear.com/api/initials/{{ Auth::user()->name  ?? null}}.svg?margin=10 @endif" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-            <a href="" class="d-block">{{ Auth::user()->name ?? null}}</a>
+                <a href="{{ route('teacher.profile.index') }}" class="d-block">{{ Auth::user()->name ?? null}}</a>
             </div>
         </div>
 

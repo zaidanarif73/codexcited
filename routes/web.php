@@ -72,6 +72,12 @@ Route::group(["middleware" => ["teacher.access"], "namespace" => "App\Http\Contr
     Route::group(["as" => "log.", "prefix" => "log"], function () {
         Route::get("/", "StudentActivityController@index")->name('index');
     });
+
+    //profile
+    Route::group(["as" => "profile.", "prefix" => "profile"], function () {
+        Route::get("/", "ProfileController@index")->name('index');
+        Route::put("/", "ProfileController@update")->name('update');
+    });
 });
 
 //STUDENT ROUTES

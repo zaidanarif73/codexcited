@@ -85,7 +85,7 @@
             <div class="progress my-2" style="height:8px;">
               <div class="progress-bar bg-primary" style="width: {{ $progress }}%"></div>
             </div>
-            <small class="text-muted">Course completion</small>
+            <small class="text-muted">Materi terselesaikan</small>
           </div>
         </div>
         <div class="col-md-4">
@@ -95,14 +95,14 @@
             </div>
               <h6 class="fw-bold mb-1">Rank Anda</h6>
             <div class="display-6 fw-bold mb-0">{{ $rank }}</div>
-            <small class="text-muted">Due this week</small>
+            <small class="text-muted">Berdasarkan minggu ini</small>
           </div>
         </div>
       </div>
       
       <!-- Recent Activity Section -->
       <div class="card p-4 shadow-sm border-0">
-        <h5 class="fw-bold mb-3"><i class="bi bi-clock-history me-2"></i>Recent Activity</h5>
+        <h5 class="fw-bold mb-3"><i class="bi bi-clock-history me-2"></i>Aktivitas Terbaru</h5>
         <ul class="mb-0 ps-3">
           @if($recentActivities->isEmpty())
             <li class="text-muted">Tidak ada aktivitas terbaru</li>
