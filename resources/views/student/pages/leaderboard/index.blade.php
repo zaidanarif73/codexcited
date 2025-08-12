@@ -97,7 +97,7 @@
                 @if(!empty($row->user_avatar))
                 <img src="{{asset('storage/'.$row->user_avatar)}}" alt="users picture profile" class="avatar">
                 @else
-                <img src="https://i.pravatar.cc/48?img=1" alt="Sarah Wijaya" class="avatar">
+                <img src="https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg" alt="Sarah Wijaya" class="avatar">
                 @endif
                 <span class="fw-semibold">{{ $row->user_name }}</span>
               </div>

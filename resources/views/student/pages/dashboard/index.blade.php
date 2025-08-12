@@ -52,7 +52,7 @@
         @if(!empty(Auth::user()->avatar))
           <img src="{{asset('storage/'.Auth::user()->avatar)}}" alt="users picture profile" class="rounded-circle border border-3 border-white shadow-sm" width="64" height="64">
         @else
-          <img src="https://i.pravatar.cc/48?img=1" alt="users picture profile" class="rounded-circle border border-3 border-white shadow-sm" width="64" height="64">
+          <img src="https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg" alt="users picture profile" class="rounded-circle border border-3 border-white shadow-sm" width="64" height="64">
         @endif
       </a>
       <div>

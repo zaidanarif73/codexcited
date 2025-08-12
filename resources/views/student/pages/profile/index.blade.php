@@ -41,7 +41,7 @@
         @if(!empty($user->avatar))
             <img src="{{asset('storage/'.$user->avatar)}}" alt="{{ $user->name }}" class="profile-avatar shadow">
         @else
-            <img src="https://i.pravatar.cc/110?img=1" alt="{{ $user->name }}" class="profile-avatar shadow">
+            <img src="https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg" alt="{{ $user->name }}" class="profile-avatar shadow">
         @endif
         <h2 class="fw-bold mb-1">{{ $user->name }}</h2>
         <div class="text-info-50 mb-2">{{ $user->email }}</div>

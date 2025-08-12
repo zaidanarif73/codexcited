@@ -78,6 +78,16 @@ Route::group(["middleware" => ["teacher.access"], "namespace" => "App\Http\Contr
         Route::get("/", "ProfileController@index")->name('index');
         Route::put("/", "ProfileController@update")->name('update');
     });
+
+    //leaderboard
+    Route::group(["as" => "leaderboard.", "prefix" => "leaderboard"], function () {
+        Route::get("/", "LeaderboardController@index")->name('index');
+    });
+
+    //user
+    Route::group(["as" => "user.", "prefix" => "user"], function () {
+        Route::get("/", "UserController@index")->name('index');
+    });
 });
 
 //STUDENT ROUTES

@@ -20,7 +20,7 @@
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="{{ route('teacher.dashboard.index') }}" class="nav-link @if(request()->routeIs('dashboard.dashboard.index')) active @endif">
+                <a href="{{ route('teacher.dashboard.index') }}" class="nav-link @if(request()->routeIs('teacher.dashboard.index')) active @endif">
                 <i class='bx bx-tachometer col-3 bx-tada-hover' ></i>
                 <p>Dashboard</p>
                 </a>
@@ -33,7 +33,7 @@
                     \App\Enums\RoleEnum::Teacher,
                 ]))
                 <li class="nav-item">
-                <a href="{{ route('teacher.materi.index') }}" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.menu')) active @endif">
+                <a href="{{ route('teacher.materi.index') }}" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'teacher.materi')) active @endif">
                     <i class="bx bx-menu col-3 bx-tada-hover"></i>
                     <p>
                     Materi
@@ -42,7 +42,7 @@
                 </li>
 
                 <li class="nav-item">
-                <a href="" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.banner')) active @endif">
+                <a href="{{ route('teacher.leaderboard.index') }}" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'teacher.leaderboard')) active @endif">
                     <col class="row">
                     <i class='bx  bx-signal-4 col-3 bx-tada-hover'  ></i> 
                     <p>
@@ -53,18 +53,10 @@
                 </li>
                 
                 <li class="nav-item">
-                <a href="" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.berita')) active @endif">
-                    <col class="row">
-                    <i class="bx bx-news col-3 bx-tada-hover"></i>
-                    <p>
-                    Forum Diskusi
-                    </p>
-                    </col>
-                </a>
                 </li>
 
                 <li class="nav-item">
-                <a href="" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.user')) active @endif">
+                <a href="{{ route("teacher.user.index") }}" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'teacher.user')) active @endif">
                     <i class='bx bx-user col-3 bx-tada-hover'></i>
                     <p>
                     User
@@ -81,7 +73,7 @@
                 </a>
                 </li>
                 <li class="nav-item">
-                <a href="{{ route('teacher.log.index') }}" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.log')) active @endif">
+                <a href="{{ route('teacher.log.index') }}" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'teacher.log')) active @endif">
                     <i class="bx bx-history col-3 bx-tada-hover"></i>
                     <p>
                     Aktivitas Siswa 

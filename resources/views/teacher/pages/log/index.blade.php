@@ -11,19 +11,44 @@
         box-shadow: 0 4px 16px rgba(0,0,0,0.06);
         padding: 1.5rem;
     }
-    .activity-icon {
+    .activity-icon img {
+        border-radius: 50%;
         width: 42px;
         height: 42px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #f1f3f9;
-        font-size: 18px;
-        color: #4e73df;
+        object-fit: cover;
     }
     .table thead th {
         background: #f8f9fc;
+        font-weight: 600;
+    }
+    .table tbody tr:hover {
+        background-color: #f5f7fa;
+        transition: background 0.2s ease;
+    }
+    .badge-platform {
+        background-color: #e0e7ff;
+        color: #3730a3;
+    }
+    .badge-browser {
+        background-color: #dcfce7;
+        color: #166534;
+    }
+    .status-indicator {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+    .pulse {
+    animation: pulse-animation 1.5s infinite;
+    }
+    @keyframes pulse-animation {
+        0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+        70% { box-shadow: 0 0 0 6px rgba(40, 167, 69, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
     }
 </style>
 @endsection
@@ -51,12 +76,14 @@
                             <td>{{ $i+1 }}</td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <div class="activity-icon me-2">
-                                        @if(!empty($activity->user_avatar))
-                                            <img src="{{asset('storage/'.$activity->user_avatar)}}" alt="Avatar" class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;">               
-                                        @else
-                                            <img src="https://i.pravatar.cc/48?img=1" alt="Avatar" class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;">
-                                        @endif
+                                    <div class="position-relative me-2" style="width: 32px; height: 32px;">
+                                        <img src="{{ !empty($activity->user_avatar) 
+                                                    ? asset('storage/'.$activity->user_avatar) 
+                                                    : 'https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg' }}"
+                                            alt="Avatar" 
+                                            class="rounded-circle" 
+                                            style="width: 32px; height: 32px; object-fit: cover;">
+                                        <span class="status-indicator {{ $activity->user->isOnline() ? 'bg-success pulse' : 'bg-secondary' }}"></span>
                                     </div>
                                     <div>
                                         <strong>{{ $activity->user->name }}</strong><br>
@@ -65,8 +92,8 @@
                                 </div>
                             </td>
                             <td>{!! $activity->description !!}</td>
-                            <td><span class="badge bg-light text-muted">{{ $activity->device }}</span></td>
-                            <td><span class="badge bg-light text-success">{{ $activity->browser }}</span></td>
+                            <td><span class="badge badge-platform">{{ $activity->device }}</span></td>
+                            <td><span class="badge badge-browser">{{ $activity->browser }}</span></td>
                             <td>
                                 <small class="text-muted">
                                     {{ $activity->created_at->diffForHumans() }}

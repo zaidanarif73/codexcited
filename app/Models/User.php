@@ -31,6 +31,7 @@ class User extends Authenticatable
         'status',
         'email_verified_at',
         'remember_token',
+        'last_seen',
     ];
 
     /**
@@ -41,7 +42,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
-
+    
     /**
      * The attributes that should be cast.
      *
@@ -50,7 +51,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'last_seen' => 'datetime',
     ];
+
+    public function isOnline()
+    {
+        return $this->last_seen && $this->last_seen->diffInMinutes(now()) <= 5;
+    }
 
     public function status()
     {

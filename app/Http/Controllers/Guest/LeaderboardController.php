@@ -36,7 +36,7 @@ class LeaderboardController extends Controller
         
         // Jika sudah login sebagai teacher
         if ($user->hasRole([\App\Enums\RoleEnum::Teacher])) {
-            // return redirect()->route('teacher.leaderboard.index');
+            return redirect()->route('teacher.leaderboard.index');
         }
 
         // Jika user login tapi tidak punya role (fallback)
