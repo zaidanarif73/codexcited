@@ -14,6 +14,10 @@ use App\Enums\RoleEnum;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//PAGE NOT FOUND
+Route::fallback(function () {
+    return view("error.index");
+});
 
 //AUTH
 Route::group(["namespace" => "App\Http\Controllers\Auth", "as" => "auth.", "prefix" => "auth"], function () {

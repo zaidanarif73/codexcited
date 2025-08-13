@@ -11,9 +11,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapseStudent">
             <div class="navbar-nav ms-auto align-items-center">
-                <a href="{{ route('student.dashboard.index') }}" class="nav-item nav-link active">Dashboard</a>
-                <a href="{{ route('student.materi.index') }}" class="nav-item nav-link">Materi</a>
-                <a href="{{ route('student.leaderboard.index') }}" class="nav-item nav-link">Leaderboard</a>
+                <a href="{{ route('student.dashboard.index') }}" class="nav-item nav-link @if(request()->routeIs('student.dashboard.index')) active @endif">Dashboard</a>
+                <a href="{{ route('student.materi.index') }}" class="nav-item nav-link @if(request()->routeIs('student.materi.index')) active @endif"">Materi</a>
+                <a href="{{ route('student.leaderboard.index') }}" class="nav-item nav-link @if(request()->routeIs('student.leaderboard.index')) active @endif"">Leaderboard</a>
                 {{-- <a href="{{ route('student.discussion.index') }}" class="nav-item nav-link">Forum Diskusi</a> --}}
                 <a href="{{ route('auth.logout') }}" class="nav-item nav-link">Logout</a>
                 <button id="darkModeToggle" 

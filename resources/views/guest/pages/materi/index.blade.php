@@ -5,13 +5,13 @@
     .course-card {
         border: none;
         border-radius: 1rem;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.20);
         transition: transform 0.15s, box-shadow 0.15s;
     }
 
     .course-card:hover {
         transform: translateY(-4px) scale(1.02);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+        box-shadow: 0 16px 32px rgba(0,0,0,0.13);
     }
 
     .course-image {
@@ -110,9 +110,6 @@
                         @elseif($row->difficulty == 3) Lanjutan
                         @else Tidak Diketahui
                         @endif
-                    </span>
-                    <span class="text-primary fw-semibold">
-                        <i class="bi bi-clock me-1"></i>10 Jam
                     </span>
                     </div>
                 </div>

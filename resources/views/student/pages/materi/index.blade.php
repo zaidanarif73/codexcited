@@ -102,7 +102,6 @@
                 @else
                   <span class="badge bg-primary">Tidak Diketahui</span>
                 @endif                  
-                <span class="text-primary fw-semibold"><i class="bi bi-clock me-1"></i>10 Jam</span>
               </div>
             </div>
             @php

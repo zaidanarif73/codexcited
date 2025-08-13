@@ -9,10 +9,10 @@
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="{{ route('guest.') }}" class="nav-item nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a>
-            <a href="{{ route('guest.tentang.index') }}" class="nav-item nav-link {{ request()->routeIs('about') ? 'active' : '' }}">Tentang</a>
-            <a href="{{ route('guest.materi.index') }}" class="nav-item nav-link {{ request()->routeIs('materi.index') ? 'active' : '' }}">Materi</a>
-            <a href="{{ route('guest.leaderboard.index') }}" class="nav-item nav-link {{ request()->routeIs('leaderboard') ? 'active' : '' }}">Leaderboard</a>
+            <a href="{{ route('guest.') }}" class="nav-item nav-link @if(request()->routeIs('guest.')) active @endif">Beranda</a>
+            <a href="{{ route('guest.tentang.index') }}" class="nav-item nav-link @if(request()->routeIs('guest.tentang.index')) active @endif">Tentang</a>
+            <a href="{{ route('guest.materi.index') }}" class="nav-item nav-link @if(request()->routeIs('guest.materi.index')) active @endif">Materi</a>
+            <a href="{{ route('guest.leaderboard.index') }}" class="nav-item nav-link @if(request()->routeIs('guest.leaderboard.index')) active @endif">Leaderboard</a>
 
             <!-- Tombol mobile, tampil hanya di bawah lg -->
             <a href="{{ route('auth.login.index') }}" class="btn btn-primary btn-sm d-lg-none  mt-3" style="border-radius: 6px; display: inline-flex; align-items: center; justify-content: center;">

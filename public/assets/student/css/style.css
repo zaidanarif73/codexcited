@@ -72,6 +72,9 @@ body.dark-mode {
   .dark-mode .navbar-nav a{
     color: #f0f0f0 !important;
   }
+  .dark-mode .navbar-nav .active{
+    color: var(--primary) !important;
+  }
   .dark-mode .leaderboard-card{
     background: #23283a !important;
   }
