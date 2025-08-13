@@ -53,7 +53,7 @@
         <div class="icon">
             <i class='bx bxs-news' ></i>
         </div>
-        <a href="" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="{{ route('teacher.user.index') }}" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
     <!-- ./col -->
@@ -75,13 +75,13 @@
     <!-- small box -->
         <div class="small-box bg-danger">
             <div class="inner">
-            <h3>44</h3>
+            <h3>{{ $onlineCount }}</h3>
             <p>User Online</p>
             </div>
             <div class="icon">
                 <i class='bx bx-image-alt'></i>
             </div>
-            <a href="" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('teacher.user.index') }}" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     @endif

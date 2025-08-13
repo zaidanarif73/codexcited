@@ -8,6 +8,7 @@ use App\Models\Materi;
 use App\Models\User;
 use App\Models\StudentActivity;
 use App\Enums\RoleEnum;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -30,11 +31,17 @@ class DashboardController extends Controller
         //count all user activity logs
         $activityCount = $this->activity::count();
 
+        //count all online user students
+        $onlineCount = $this->user::role(RoleEnum::Student)
+            ->where('last_seen', '>=', Carbon::now()->subMinutes(5))
+            ->count();
+
 
         return view($this->view. "index", [
             'materiCount' => $materiCount,
             'studentCount' => $studentCount,
             'activityCount' => $activityCount,
+            'onlineCount' => $onlineCount,
         ]);
     }
 }

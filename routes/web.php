@@ -103,9 +103,9 @@ Route::group(["middleware" => ["student.access"], "namespace" => "App\Http\Contr
         Route::get("/{id}/{slug}", "MateriController@show")->name('show');
     });
 
-    Route::group(["as" => "discussion.", "prefix" => "discussion"], function () {
-        Route::get("/", "DiscussionController@index")->name('index');
-    });
+    // Route::group(["as" => "discussion.", "prefix" => "discussion"], function () {
+    //     Route::get("/", "DiscussionController@index")->name('index');
+    // });
 
     Route::group(["as" => "leaderboard.", "prefix" => "leaderboard"], function () {
         Route::get("/", "LeaderboardController@index")->name('index');
