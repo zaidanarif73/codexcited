@@ -71,6 +71,7 @@
                         <th>Email</th>
                         <th>Tanggal Bergabung</th>
                         <th>Status</th>
+                        <th>Aksi</th> <!-- Tambahkan kolom aksi -->
                     </tr>
                 </thead>
                 <tbody>
@@ -97,10 +98,24 @@
                                     <span class="badge bg-secondary">Offline</span>
                                 @endif
                             </td>
+                            <td class="text-center">
+                                <a href="{{ route('teacher.user.edit', $student->id) }}" class="btn btn-sm btn-outline-primary" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+
+                                <form action="{{ route('teacher.user.destroy', $student->id) }}" method="POST" class="d-inline"
+                                    >
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="btn btn-sm btn-outline-danger delete-btn" title="Hapus">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center text-muted">Belum ada siswa</td>
+                            <td colspan="7" class="text-center text-muted">Belum ada siswa</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -113,4 +128,28 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    document.querySelectorAll('.delete-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+            const form = btn.closest('form');
+            Swal.fire({
+                title: 'Apakah kamu yakin?',
+                text: "Perubahan tidak dapat dibatalkan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // baru submit form
+                }
+            });
+        });
+    });
+</script>
 @endsection

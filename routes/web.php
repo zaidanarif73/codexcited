@@ -86,7 +86,10 @@ Route::group(["middleware" => ["teacher.access"], "namespace" => "App\Http\Contr
 
     //user
     Route::group(["as" => "user.", "prefix" => "user"], function () {
-        Route::get("/", "UserController@index")->name('index');
+        Route::get("/", "UserController@index")->name('index');          // Daftar user
+        Route::get("/{id}/edit", "UserController@edit")->name('edit');   // Form edit user
+        Route::put("/{id}", "UserController@update")->name('update');    // Update user
+        Route::delete("/{id}", "UserController@destroy")->name('destroy'); // Hapus user
     });
 });
 
