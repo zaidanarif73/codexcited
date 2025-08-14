@@ -76,7 +76,6 @@
           <tr class="text-info">
             <th scope="col">Rank</th>
             <th scope="col">Nama</th>
-            <th scope="col" class="text-center">Courses</th>
             <th scope="col" class="text-center">Score</th>
           </tr>
         </thead>
@@ -102,7 +101,6 @@
                 <span class="fw-semibold">{{ $row->user_name }}</span>
               </div>
             </td>
-            <td class="text-center">5</td>
             <td class="text-center fw-bold text-muted">{{ $row->score }}</td>
           </tr>
           @empty

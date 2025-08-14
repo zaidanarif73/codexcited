@@ -17,26 +17,47 @@ class MateriProgressController extends Controller
             'progress'         => ['required','integer','min:0','max:100'],
         ]);
 
+        // Cek progress lama
+        $existingProgress = MateriProgress::where('user_id', $r->user()->id)
+            ->where('materi_detail_id', $data['materi_detail_id'])
+            ->value('progress') ?? 0;
+
+        // Update progress
         $mp = MateriProgress::updateOrCreate(
             ['user_id' => $r->user()->id, 'materi_detail_id' => $data['materi_detail_id']],
             ['progress' => $data['progress']]
         );
 
-        // Update total progress for the user on skor
-        $total = MateriProgress::where('user_id', $r->user()->id)
-            ->sum('progress');
-            
-        Score::updateOrCreate(
-            ['user_id' => $r->user()->id],
-            ['score'   => $total]
-        );
+        // Ambil skor lama
+        $currentScore = Score::where('user_id', $r->user()->id)->value('score') ?? 0;
 
-        if($data['progress'] == 100){
+        // Default total skor tetap sama
+        $total = $currentScore;
+
+        // Hanya tambah skor kalau dari <100 ke 100
+        if ($existingProgress < 100 && $data['progress'] == 100) {
+            $total = $currentScore + 100; // skor tambahan per submateri
+
+            Score::updateOrCreate(
+                ['user_id' => $r->user()->id],
+                ['score'   => $total]
+            );
+
             $detail = MateriDetail::where('id', $data['materi_detail_id'])->value('title');
 
-            logActivity('open_materi_detail', $r->user()->id, 'Menyelesaikan sub materi '. $detail .' dengan skor: ' . $data['progress']);
+            logActivity('open_materi_detail', $r->user()->id, 'Menyelesaikan sub materi '. $detail .' dengan skor: ' . 100);
+
+            logScore(
+                $r->user()->id,
+                'sub_materi',
+                100,
+                $total
+            );
         }
-        
-        return response()->json(['saved' => $mp->progress,'total_score'  => $total]);
+
+        return response()->json([
+            'saved'       => $mp->progress,
+            'total_score' => $total
+        ]);
     }
 }

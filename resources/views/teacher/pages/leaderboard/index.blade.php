@@ -75,7 +75,7 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="position-relative d-inline-block mx-3">
-                                        <a href="">
+                                        <a href="{{ route('teacher.user.show', $item->user->id) }}">
                                             <img src="{{ $item->user_avatar ? asset('storage/'.$item->user_avatar) : 'https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg' }}" 
                                             alt="Avatar" 
                                             class="rounded-circle" 
@@ -102,7 +102,7 @@
 
         {{-- Pagination --}}
         <div class="mt-3">
-            {{ $leaderboard->links('pagination::bootstrap-5') }}
+            {{ $leaderboard->links() }}
         </div>
     </div>
 </div>

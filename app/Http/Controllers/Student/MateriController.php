@@ -93,7 +93,7 @@ class MateriController extends Controller
         return view($this->view.'code' , ['code' => $decodedCode, 'materi_id' => $id]);
     }
 
-    public function addScore(Request $request)
+    public function addScore(Request $request) //khusus code editor
     {
         $userId = auth()->id();
 
@@ -114,6 +114,14 @@ class MateriController extends Controller
         // Log aktivitas run code
         $materiTitle = Materi::where('id', $request->input('materi_id'))->value('title');
         logActivity('run_code_editor', $request->input('materi_id'), 'Melakukan run code editor pada materi ' . $materiTitle);
+
+        // Simpan log score
+        logScore(
+            $userId,
+            'code-editor',
+            $request->input('score', 1),
+            $score->score
+        );
 
         return response()->json(['message' => 'Score updated']);
     }

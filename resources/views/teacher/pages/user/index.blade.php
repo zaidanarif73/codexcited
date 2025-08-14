@@ -50,15 +50,22 @@
         
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h5 class="mb-0"><i class="fas fa-users text-primary me-2"></i> Daftar Siswa</h5>
-            <form method="GET" action="">
-                <select name="sort" class="form-select form-select-sm shadow-sm border-primary" 
-                        style="width: 160px;" onchange="this.form.submit()">
-                    <option value="latest" {{ $sort == 'latest' ? 'selected' : '' }}>Terbaru</option>
-                    <option value="oldest" {{ $sort == 'oldest' ? 'selected' : '' }}>Terlama</option>
-                    <option value="name_asc" {{ $sort == 'name_asc' ? 'selected' : '' }}>Nama A-Z</option>
-                    <option value="name_desc" {{ $sort == 'name_desc' ? 'selected' : '' }}>Nama Z-A</option>
-                </select>
-            </form>
+
+            <div class="d-flex gap-2">
+                {{-- <form method="GET" action="">
+                    <select name="sort" class="form-select form-select-sm shadow-sm border-primary" 
+                            style="width: 160px;" onchange="this.form.submit()">
+                        <option value="latest" {{ $sort == 'latest' ? 'selected' : '' }}>Terbaru</option>
+                        <option value="oldest" {{ $sort == 'oldest' ? 'selected' : '' }}>Terlama</option>
+                        <option value="name_asc" {{ $sort == 'name_asc' ? 'selected' : '' }}>Nama A-Z</option>
+                        <option value="name_desc" {{ $sort == 'name_desc' ? 'selected' : '' }}>Nama Z-A</option>
+                    </select>
+                </form> --}}
+                <form method="GET" action="" class="d-flex">
+                    <input type="text" name="search" value="{{ $search ?? '' }}" class="form-control form-control-sm" placeholder="Cari nama/email...">
+                    <button type="submit" class="btn btn-sm btn-primary ms-1">Search</button>
+                </form>
+            </div>
         </div>
 
         <div class="table-responsive">
@@ -67,11 +74,33 @@
                     <tr>
                         <th>#</th>
                         <th>Avatar</th>
-                        <th>Nama</th>
+                        <th>
+                            <a href="{{ route('teacher.user.index', array_merge(request()->all(), ['sort' => $sort == 'name_asc' ? 'name_desc' : 'name_asc'])) }}">
+                                Nama
+                                @if($sort == 'name_asc')
+                                    <i class="fas fa-sort-up"></i>
+                                @elseif($sort == 'name_desc')
+                                    <i class="fas fa-sort-down"></i>
+                                @else
+                                    <i class="fas fa-sort"></i>
+                                @endif
+                            </a>
+                        </th>
                         <th>Email</th>
-                        <th>Tanggal Bergabung</th>
+                        <th>
+                            <a href="{{ route('teacher.user.index', array_merge(request()->all(), ['sort' => $sort == 'latest' ? 'oldest' : 'latest'])) }}">
+                                Tanggal Bergabung
+                                @if($sort == 'latest')
+                                    <i class="fas fa-sort-down"></i>
+                                @elseif($sort == 'oldest')
+                                    <i class="fas fa-sort-up"></i>
+                                @else
+                                    <i class="fas fa-sort"></i>
+                                @endif
+                            </a>
+                        </th>
                         <th>Status</th>
-                        <th>Aksi</th> <!-- Tambahkan kolom aksi -->
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,7 +109,7 @@
                             <td>{{ $students->firstItem() + $index }}</td>
                             <td>
                                 <div class="position-relative d-inline-block">
-                                    <a href="">
+                                    <a href="{{ route('teacher.user.show', $student->id) }}">
                                         <img src="{{ $student->avatar ? asset('storage/'.$student->avatar) : 'https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg' }}"
                                         alt="Avatar"
                                         class="rounded-circle"
@@ -105,8 +134,7 @@
                                     <i class="fas fa-edit"></i>
                                 </a>
 
-                                <form action="{{ route('teacher.user.destroy', $student->id) }}" method="POST" class="d-inline"
-                                    >
+                                <form action="{{ route('teacher.user.destroy', $student->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-sm btn-outline-danger delete-btn" title="Hapus">

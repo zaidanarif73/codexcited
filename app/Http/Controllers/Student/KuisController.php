@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kuis;
 use Illuminate\Http\Request;
 use App\Models\Materi;
+use App\Models\ScoreLog;
 use Illuminate\Support\Facades\App;
 
 class KuisController extends Controller
@@ -49,6 +50,14 @@ class KuisController extends Controller
                 'score' => $request->input('score', 1),
             ]);
         }
+
+        // Simpan log score
+        logScore(
+            $userId,
+            'quiz',
+            $request->input('score', 1),
+            $score->score
+        );
 
         // Simpan log aktivitas
         logActivity(

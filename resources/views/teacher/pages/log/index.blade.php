@@ -77,13 +77,15 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="position-relative me-2" style="width: 32px; height: 32px;">
-                                        <img src="{{ !empty($activity->user_avatar) 
+                                        <a href="{{ route('teacher.user.show', $activity->user->id) }}">
+                                            <img src="{{ !empty($activity->user_avatar) 
                                                     ? asset('storage/'.$activity->user_avatar) 
                                                     : 'https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg' }}"
                                             alt="Avatar" 
                                             class="rounded-circle" 
                                             style="width: 32px; height: 32px; object-fit: cover;">
-                                        <span class="status-indicator {{ $activity->user->isOnline() ? 'bg-success pulse' : 'bg-secondary' }}"></span>
+                                            <span class="status-indicator {{ $activity->user->isOnline() ? 'bg-success pulse' : 'bg-secondary' }}"></span>
+                                        </a>
                                     </div>
                                     <div>
                                         <strong>{{ $activity->user->name }}</strong><br>
@@ -111,7 +113,7 @@
 
         {{-- Pagination --}}
         <div class="mt-3">
-            {{ $activities->links('pagination::bootstrap-5') }}
+            {{ $activities->links() }}
         </div>
     </div>
 </div>

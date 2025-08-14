@@ -64,14 +64,14 @@
                 </a>
                 </li>
                 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                 <a href="" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'dashboard.pengaturan')) active @endif">
                     <i class="bx bx-cog col-3 bx-tada-hover"></i>
                     <p>
                     Pengaturan
                     </p>
                 </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                 <a href="{{ route('teacher.log.index') }}" class="nav-link @if(Str::startsWith(request()->route()->getName(), 'teacher.log')) active @endif">
                     <i class="bx bx-history col-3 bx-tada-hover"></i>

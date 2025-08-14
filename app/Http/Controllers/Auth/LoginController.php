@@ -52,7 +52,7 @@ class LoginController extends Controller
 
             if(Auth::attempt($field,$rememberme)){
                 if(!Auth::user()->hasRole([
-                        RoleEnum::SuperAdmin,
+                        // RoleEnum::SuperAdmin,
                         RoleEnum::Teacher,
                         RoleEnum::Student,
                         
