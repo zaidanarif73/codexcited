@@ -225,7 +225,7 @@
                 if (i === selected && i !== correctIndex) label.classList.add('wrong-answer');
             });
 
-            if (selected === correctIndex) {
+            if (selected == correctIndex) {
                 score += 10;
                 document.getElementById("score").innerText = score;
             }

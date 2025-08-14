@@ -72,7 +72,27 @@ class KuisController extends Controller
 
     public function update(Request $request, $materiId, $kuisId)
     {
-        // Validasi dan update
+        $validated = $request->validate([
+            'question'     => 'required|string',
+            'options'      => 'required|array|min:4|max:4',
+            'options.*'    => 'required|string',
+            'correct'      => 'required|integer|min:0|max:3',
+            'explanation'  => 'nullable|string',
+        ]);
+
+        $kuis = Kuis::where('materi_id', $materiId)
+                    ->where('id', $kuisId)
+                    ->firstOrFail();
+
+        $kuis->update([
+            'question'    => $validated['question'],
+            'options'     => $validated['options'],
+            'correct'     => $validated['correct'],
+            'explanation' => $validated['explanation'] ?? null,
+        ]);
+
+        alert()->html('Berhasil','Kuis berhasil diupdate','success');
+        return redirect()->route('teacher.materi.kuis.index', $materiId);
     }
 
     public function destroy($materiId, $kuisId)

@@ -19,5 +19,6 @@ class Kuis extends Model
 
     protected $casts = [
         'options' => 'array', // untuk otomatis decode json ke array
+        'correct' => 'integer',
     ];
 }
