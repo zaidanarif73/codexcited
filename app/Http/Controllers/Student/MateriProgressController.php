@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MateriProgress;
+use App\Models\MateriDetail;
 use App\Models\Score;
 
 class MateriProgressController extends Controller
@@ -29,6 +30,12 @@ class MateriProgressController extends Controller
             ['user_id' => $r->user()->id],
             ['score'   => $total]
         );
+
+        if($data['progress'] == 100){
+            $detail = MateriDetail::where('id', $data['materi_detail_id'])->value('title');
+
+            logActivity('open_materi_detail', $r->user()->id, 'Menyelesaikan sub materi '. $detail .' dengan skor: ' . $data['progress']);
+        }
         
         return response()->json(['saved' => $mp->progress,'total_score'  => $total]);
     }

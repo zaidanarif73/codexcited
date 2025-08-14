@@ -75,11 +75,13 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="position-relative d-inline-block mx-3">
-                                        <img src="{{ $item->user_avatar ? asset('storage/'.$item->user_avatar) : 'https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg' }}" 
+                                        <a href="">
+                                            <img src="{{ $item->user_avatar ? asset('storage/'.$item->user_avatar) : 'https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg' }}" 
                                             alt="Avatar" 
                                             class="rounded-circle" 
                                             style="width: 48px; height: 48px; object-fit: cover; flex-shrink: 0;">
-                                        <span class="status-indicator {{ $item->user->isOnline() ? 'bg-success pulse' : 'bg-secondary' }}"></span>
+                                            <span class="status-indicator {{ $item->user->isOnline() ? 'bg-success pulse' : 'bg-secondary' }}"></span>
+                                        </a>
                                     </div>
                                     <div>
                                         <strong>{{ $item->user->name }}</strong><br>

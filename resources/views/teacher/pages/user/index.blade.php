@@ -80,12 +80,14 @@
                             <td>{{ $students->firstItem() + $index }}</td>
                             <td>
                                 <div class="position-relative d-inline-block">
-                                    <img src="{{ $student->avatar ? asset('storage/'.$student->avatar) : 'https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg' }}"
+                                    <a href="">
+                                        <img src="{{ $student->avatar ? asset('storage/'.$student->avatar) : 'https://i.pinimg.com/736x/15/04/61/150461327bd8b04d7e55d64665196d64.jpg' }}"
                                         alt="Avatar"
                                         class="rounded-circle"
                                         style="width: 42px; height: 42px; object-fit: cover;">
                                     
-                                    <span class="status-indicator {{ $student->isOnline() ? 'bg-success pulse' : 'bg-secondary' }}"></span>
+                                        <span class="status-indicator {{ $student->isOnline() ? 'bg-success pulse' : 'bg-secondary' }}"></span>
+                                    </a>
                                 </div>
                             </td>
                             <td>{{ $student->name }}</td>
