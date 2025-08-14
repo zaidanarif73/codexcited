@@ -36,7 +36,7 @@ class KuisController extends Controller
                 'question' => 'required|string',
                 'options' => 'required|array|min:4|max:4',
                 'options.*' => 'required|string',
-                'correct' => 'required|integer|min:1|max:4',
+                'correct' => 'required|integer|min:0|max:3',
                 'explanation' => 'nullable|string',
             ]);
 
