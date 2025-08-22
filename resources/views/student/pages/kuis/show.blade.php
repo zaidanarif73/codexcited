@@ -207,9 +207,18 @@
             quizContainer.innerHTML += `
                 <label onclick="selectOption(${i})">
                     <input type="radio" name="q_answer" value="${i}">
-                    <span class="option-letter">${letters[i]}</span> ${opt}
+                    <span class="option-letter">${letters[i]}</span> ${escapeHtml(opt)}
                 </label>`;
         });
+    }
+
+    function escapeHtml(text) {
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 
     function selectOption(selected) {
