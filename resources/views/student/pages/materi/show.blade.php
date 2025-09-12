@@ -136,9 +136,40 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Instruksi -->
+<div class="modal fade" id="instruksiModal" tabindex="-1" aria-labelledby="instruksiModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 shadow">
+        <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="instruksiModalLabel">Instruksi Pengerjaan</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+            <p>Selamat datang di halaman materi 🎉</p>
+            <p>Silakan kerjakan materi ini secara berurutan dari atas ke bawah. Jangan lompat ke bagian lain sebelum menyelesaikan langkah sebelumnya.</p>
+            <ul>
+            <li>Baca setiap materi dengan seksama</li>
+            <li>Kerjakan latihan kode dan kuis yang tersedia</li>
+            <li>Setelah selesai, silahkan lanjutkan ke materi berikutnya</li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Saya Mengerti</button>
+        </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('script')
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    let instruksiModal = new bootstrap.Modal(document.getElementById('instruksiModal'));
+    instruksiModal.show();
+});
+</script>
+
 <script>
 const progressFromServer = @json($progressMap);   // {id: %}
 const updateUrl          = "{{ route('progress.update') }}";

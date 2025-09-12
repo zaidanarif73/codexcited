@@ -12,7 +12,7 @@
                                 <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Kursus Bahasa Pemrograman Online</h5>
                                 <h1 class="display-3 text-white animated slideInDown">Belajar Koding, Kuasai Masa Depan!</h1>
                                 <a href="{{ route('guest.tentang.index') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
-                                <a href="{{ route('auth.login.index') }}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
+                                <a href="{{ route('auth.login.index') }}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Masuk Sekarang</a>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                                 <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Best Online Courses</h5>
                                 <h1 class="display-3 text-white animated slideInDown">Dari Pemula Menjadi Pengembang, Mulai dengan Kode!</h1>
                                 <a href="{{ route('guest.tentang.index') }}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
-                                <a href="{{ route('auth.login.index') }}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
+                                <a href="{{ route('auth.login.index') }}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Masuk Sekarang</a>
                             </div>
                         </div>
                     </div>
