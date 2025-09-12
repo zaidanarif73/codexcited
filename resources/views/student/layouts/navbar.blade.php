@@ -14,7 +14,7 @@
                 <a href="{{ route('student.dashboard.index') }}" class="nav-item nav-link @if(request()->routeIs('student.dashboard.index')) active @endif">Dashboard</a>
                 <a href="{{ route('student.materi.index') }}" class="nav-item nav-link @if(request()->routeIs('student.materi.index')) active @endif"">Materi</a>
                 <a href="{{ route('student.leaderboard.index') }}" class="nav-item nav-link @if(request()->routeIs('student.leaderboard.index')) active @endif"">Leaderboard</a>
-                {{-- <a href="{{ route('student.discussion.index') }}" class="nav-item nav-link">Forum Diskusi</a> --}}
+                <a href="https://drive.google.com/file/d/1ZslHwfcfn7u-dSEpRPMg_-fblSBcQmz7/view?usp=sharing" target="_blank" class="nav-item nav-link"> Panduan </a>                
                 <a href="{{ route('auth.logout') }}" class="nav-item nav-link">Logout</a>
                 <button id="darkModeToggle" 
                     class="btn btn-light rounded-circle shadow-sm mx-2 p-0" 
