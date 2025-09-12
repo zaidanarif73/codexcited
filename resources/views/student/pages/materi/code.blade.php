@@ -35,6 +35,32 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Instruksi -->
+<div class="modal fade" id="instruksiModal" tabindex="-1" aria-labelledby="instruksiModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-3 shadow">
+        <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="instruksiModalLabel">Instruksi Pengerjaan</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+            <p>Selamat datang di <strong>Live Code Editor</strong> 🎉</p>
+            <p>Ikuti instruksi berikut untuk mengisi baris kode sesuai materi:</p>
+            <ul>
+            <li>Tulis kode sesuai contoh atau perintah di materi.</li>
+            <li>Gunakan tombol <b>Run</b> atau shortcut <code>Ctrl + Enter</code> untuk menjalankan kode.</li>
+            <li>Lihat hasil kode di panel sebelah kanan.</li>
+            <li>Pastikan menuliskan kode dengan benar sebelum melanjutkan ke langkah berikutnya.</li>
+            <li>Kamu akan mendapat poin setiap kali menjalankan kode baru.</li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Saya Mengerti</button>
+        </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section('script')
 <!-- CodeMirror JavaScript -->
@@ -119,5 +145,10 @@
         });
     }
 
+    // Tampilkan modal instruksi saat halaman dibuka
+    document.addEventListener("DOMContentLoaded", function(){
+        let instruksiModal = new bootstrap.Modal(document.getElementById('instruksiModal'));
+        instruksiModal.show();
+    });
 </script>
 @endsection
