@@ -5,13 +5,13 @@
 @section('css')
 <style>
     .hero-section {
-    position: relative;
-    width: 100%;
-    padding: 4rem 1rem;
-    background: url('https://i.pinimg.com/1200x/b6/dc/5e/b6dc5ee29bcf9dd46af864b4896cb7da.jpg') center/cover no-repeat;
-    color: white;
-    text-align: center;
-    overflow: hidden;
+        position: relative;
+        width: 100%;
+        padding: 4rem 1rem;
+        background: url('https://i.pinimg.com/1200x/b6/dc/5e/b6dc5ee29bcf9dd46af864b4896cb7da.jpg') center/cover no-repeat;
+        color: white;
+        text-align: center;
+        overflow: hidden;
     }
 
     .hero-section::before {
@@ -19,7 +19,7 @@
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.45); /* overlay gelap transparan */
+        background: rgba(0, 0, 0, 0.45);
         z-index: 0;
     }
 
@@ -32,12 +32,6 @@
     @keyframes fadeSlideUp {
         0% { opacity: 0; transform: translateY(20px); }
         100% { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-section h1 {
-        font-weight: 700;
-        font-size: 2.5rem;
-        color: #fff;
     }
 
     .feature-card {
@@ -56,6 +50,13 @@
     .feature-icon {
         font-size: 2.5rem;
         color: #06BBCC;
+    }
+
+    .developer-box {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     }
 </style>
 @endsection
@@ -79,9 +80,21 @@
                 CODEXCITED adalah platform pembelajaran online yang dirancang khusus untuk membantu pelajar, mahasiswa, maupun profesional dalam menguasai pemrograman dan teknologi. 
                 Kami menyediakan materi yang terstruktur, kuis interaktif, dan latihan praktis yang bisa langsung diaplikasikan.
             </p>
+            <p class="text-muted text-center mx-auto" style="max-width: 900px;">
+                Platform pembelajaran CODEXCITED dikembangkan oleh <strong>Zaidan Arif</strong>, 
+                Mahasiswa Program Studi <strong>Pendidikan Teknik Informatika</strong>, 
+                sebagai bagian dari tugas skripsi pengembangan media pembelajaran berbasis website. 
+                Platform ini dirancang untuk mendukung kegiatan belajar pemrograman bagi siswa maupun mahasiswa 
+                melalui penyajian materi yang terstruktur dan dilengkapi dengan fitur kuis interaktif dan latihan praktik.
+            </p>
+            <p class="text-muted text-center mx-auto" style="max-width: 900px;">
+                Pengembangan platform ini berada di bawah bimbingan <strong>Prof. Dr. H. Hakkun Elmunsyah, S.T., M.T</strong> 
+                yang berperan dalam melakukan supervisi, validasi konten, serta memberikan masukan teknis 
+                sehingga sistem ini dapat digunakan sebagai media pembelajaran yang efektif dan adaptif terhadap kebutuhan pengguna.
+            </p>
         </div>
 
-        {{-- Fitur Keunggulan --}}
+        {{-- Keunggulan --}}
         <div class="mb-5">
             <h2 class="fw-bold mb-4 text-center">Keunggulan Kami</h2>
             <div class="row g-4">
@@ -112,6 +125,41 @@
                         <p class="text-muted">Coba tulis dan jalankan kode langsung di browser tanpa perlu install software tambahan.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        {{-- Profil Pengembang --}}
+        <div class="mt-5">
+            <h2 class="fw-bold text-center mb-4">Pengembang Platform</h2>
+
+            <div class="row justify-content-center">
+
+                <!-- Pengembang -->
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="card p-3 border-0 shadow-sm rounded-4">
+                        <img src="{{ asset('assets/guest/img/pp.jpg') }}" 
+                            class="rounded-circle mx-auto" 
+                            width="150" height="150" 
+                            style="object-fit: cover;">
+                        <h5 class="mt-3 fw-bold">Zaidan Arief</h5>
+                        <p class="text-muted mb-1">Frontend & Backend Developer</p>
+                        <small class="text-secondary">Mahasiswa Pendidikan Teknik Informatika</small>
+                    </div>
+                </div>
+
+                <!-- Dosen Pembimbing -->
+                <div class="col-lg-4 col-md-6 text-center mb-4">
+                    <div class="card p-3 border-0 shadow-sm rounded-4">
+                        <img src="{{ asset('assets/guest/img/dospem.jpg') }}" 
+                            class="rounded-circle mx-auto"
+                            width="150" height="150"
+                            style="object-fit: cover;">
+                        <h5 class="mt-3 fw-bold">Prof. Dr. H. Hakkun Elmunsyah, S.T., M.T</h5>
+                        <p class="text-muted mb-1">Dosen Pembimbing</p>
+                        <small class="text-secondary">Program Studi Pendidikan Teknik Informatika</small>
+                    </div>
+                </div>
+
             </div>
         </div>
 

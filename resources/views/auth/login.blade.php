@@ -26,6 +26,11 @@
 					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="password" placeholder="Password" required="">
 					<button value="daftar" type="submit">Daftar Sekarang</button>
+					<!-- Logo Section -->
+					<div class="text-center pt-3">
+						<img src="{{URL::to('/')}}/assets/guest/img/logo_um.webp"
+							alt="Logo UM" style="height: 40px; object-fit: contain;">
+					</div>
 				</form>
 			</div>
 
@@ -36,6 +41,11 @@
 					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="password" placeholder="Password" required="">
 					<button value="masuk" type="submit">Masuk</button>
+					<!-- Logo Section -->
+					<div class="text-center pt-3">
+						<img src="{{URL::to('/')}}/assets/guest/img/logo_um.webp"
+							alt="Logo UM" style="height: 40px; object-fit: contain;">
+					</div>
 				</form>
 			</div>
 	</div>

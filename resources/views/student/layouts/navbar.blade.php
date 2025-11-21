@@ -1,10 +1,11 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0" style="padding-top: 0.25rem; padding-bottom: 0.25rem;">
     <div class="container px-4">
-        <a href="" class="navbar-brand d-flex align-items-center">
-            <h2 class="m-0 text-primary" style="font-size:1.5rem;">
-                <i class="fa fa-book me-2"></i>CODEXCITED
-            </h2>
+        <a href="{{ route('guest.') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 fw-bold text-primary">CODEXCITED</h2>
+            <img src="{{ asset('assets/guest/img/logo_um.webp') }}"
+                alt="Logo CODEXCITED"
+                style="height: 45px; width: auto; margin-left: 10px; object-fit: contain;">
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapseStudent">
             <span class="navbar-toggler-icon"></span>
